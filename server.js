@@ -23,6 +23,19 @@ mongoose
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
 
+app.get('/superheroes', function (req, res) {
+  res.send(superheroes);
+});
+
+app.post('/superheroes', function (req, res) {
+  const { nickname, real_name, origin_description, superpowers, catch_phrase, Images } = req.body;
+  const superhero = new Superhero ({ nickname, real_name, origin_description, superpowers, catch_phrase, Images });
+  superhero
+    .save()
+    .then((data) => res.send(data))
+    .catch((error) => console.log(error))
+});
+
 app.listen(PORT, function () {
   console.log(`Listening on ${PORT}`);
 });
