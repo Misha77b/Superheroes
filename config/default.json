@@ -1,4 +1,4 @@
 {
     "serverPort" : 5000,
-    "dbUrl" : ""
+    "dbUrl" : "mongodb+srv://misha77b:B6JwFyOSAk8rUgwL@cluster0.lthpj2e.mongodb.net/superhero_database?retryWrites=true&w=majority"
 }
