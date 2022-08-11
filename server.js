@@ -118,5 +118,5 @@ app.patch('/team/:id', function (req, res) {
 })
 
 app.listen(3020, function () {
-  console.log('Listening on 3020');
+  console.log(`Listening on ${port}`);
 });
