@@ -28,4 +28,5 @@ const superheroSchema = new Schema({
     }
 });
 
-module.exports = Superhero = mongoose.model("superhero", superheroSchema);
+const superhero = mongoose.model("superhero", superheroSchema);
+module.exports = superhero;
