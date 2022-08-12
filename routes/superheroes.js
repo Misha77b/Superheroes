@@ -4,7 +4,7 @@ const Superhero = require('../models/superhero');
 const router = new Router();
 
 router.get('/', (req, res) => {
-    res.send(res.body);
+    res.send(req.body);
     res.send('hello, superheroes info');
 })
 

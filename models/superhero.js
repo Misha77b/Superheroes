@@ -22,12 +22,10 @@ const superheroSchema = new Schema({
         type: String,
         // required: true,
     },
-    Images: [
-        {
-          type: String,
-          required: true
-        }
-    ]
+    Images: {
+        type: String,
+        required: true
+    }
 });
 
 module.exports = Superhero = mongoose.model("superhero", superheroSchema);
