@@ -20,7 +20,7 @@ const db = config.get('dbUrl')
 
 // Connect to MongoDB
 mongoose
-  .connect(db, { useNewUrlParser: true, useFindAndModify: false })
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB Connected'))
   .catch((err) => console.log(err));
 
