@@ -2,4 +2,4 @@
 
 ## First stage
 
-Run up the server using 
+Run up the server using nodemon server
