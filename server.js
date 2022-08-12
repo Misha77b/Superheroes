@@ -1,8 +1,8 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const config = require('config');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const superheroRouter = require('./routes/superheroes');
 

@@ -20,7 +20,7 @@ const superheroSchema = new Schema({
     },
     catch_phrase: {
         type: String,
-        required: true,
+        // required: true,
     },
     Images: [
         {
