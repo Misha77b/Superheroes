@@ -12,6 +12,7 @@ const initState = {
     superheroeId: null,
     updateSuperheroeRequest: null,
     superheroes: [],
+    superheroe: {},
     deleteSuperheroeRequest: null,
 }
 
@@ -28,7 +29,7 @@ const superheroesReducer = (state = initState, action) => {
         case GET_SUPERHEROE_REQUEST: {
             return {
                 ...state,
-                superheroeId: action.payload
+                superheroe: action.payload
             }
         }
 

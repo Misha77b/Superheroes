@@ -43,13 +43,13 @@ export const getSuperheroes = () => {
 
 export const getSuperheroe = (id) => {
     return (dispatch) => {
-        fetch(`http://localhost:5000/superheroes/${id}`, {
+        fetch(`http://localhost:5000/superheroes/view/${id}`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
             }
         }).then(res => res.json())
-        .then(superheroe => {dispatch(getSuperheroeRequest(superheroe._id))})
+        .then(superheroe => {dispatch(getSuperheroeRequest(superheroe))})
         .catch(err => {
             dispatch(setError(err))
         })
@@ -58,7 +58,7 @@ export const getSuperheroe = (id) => {
 
 export const updateSuperheroe = (superheroe) => {
     return (dispatch) => {
-        fetch(`http://localhost:5000/superheroes/${id}`, {
+        fetch(`http://localhost:5000/superheroes/view/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
