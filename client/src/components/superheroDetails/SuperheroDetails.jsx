@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from "react-router-dom";
 
-import { Container, Typography, Box} from '@mui/material';
-
 import { getSuperheroe } from '../../API/superheroes/superheroes.thunks'
 import useStylesSuperheroDetails from "./useStylesSuperheroDetails";
 
@@ -25,10 +23,10 @@ const SuperheroDetails = () => {
   return (
     <div className="superheroDetails">
       <div className='img-container'>
-        <img className='superhero-image' src={superheroe.Images} alt='girl-and-pet' />
+        <img className='superhero-image' src={superheroe.Images} alt={superheroe.nickname} />
       </div>
       <div className='info-container'>
-        
+        <span>{superheroe.nickname}</span>
       </div>
     </div>
   )

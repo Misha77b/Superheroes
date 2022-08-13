@@ -3,17 +3,11 @@ import { makeStyles } from '@mui/styles';
 const useStylesSuperheroDetails = makeStyles({
     '@global': {
         '.superheroDetails': {
-            display: 'felx',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            position: 'relative',
+            padding: '75px',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr'
         },
         '.img-container': {
-            width: '40vw',
-            height: 'fit-content',
-            position: 'relative',
-            top: '100px',
-            left: '50px',
             border: '2px solid #9c9c9c',
             borderRadius: '20px'
         },
@@ -24,8 +18,6 @@ const useStylesSuperheroDetails = makeStyles({
             margin: '20px'
         },
         '.info-container': {
-            width: '50vw',
-            marginLeft: '40px',
         }
     }
 })
