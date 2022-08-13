@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import UseStylesHeader from './UseStylesHeader';
 import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
 import CreateSuperheroModal from '../modal/CreateSuperheroModal';
+import HomeIcon from './HomeIcon';
 
 const Header = () => {
   UseStylesHeader();
@@ -19,6 +21,16 @@ const Header = () => {
   return (
     <>
       <div className='header'>
+        <Button
+          className='home-btn'
+          component={Link}
+          to={`/`} 
+          sx={{
+            margin: '10px 50px'
+          }}
+        >
+          <HomeIcon />
+        </Button>
         <h2 className="header-logo-title">Superheroes</h2>
         <Button
             onClick={handleOpen}
@@ -29,8 +41,6 @@ const Header = () => {
               background: 'transparent',
               color: '#2D2D2D',
               borderRadius: '5px',
-              position: 'absolute',
-              right: '0'
             }}
         > 
           Create Superhero

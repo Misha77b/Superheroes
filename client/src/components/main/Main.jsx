@@ -19,7 +19,6 @@ const Main = () => {
       main: () => <SuperheroList superheroes={superheroes} />,
     },
     {
-      // I should put superhero id to the path
       path: "/view/:pageId",
       main: () => <SuperheroPage superheroes={superheroes} />,
     }

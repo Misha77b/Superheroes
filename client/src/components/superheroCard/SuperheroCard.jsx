@@ -16,12 +16,6 @@ import { deleteSuperheroe } from '../../API/superheroes/superheroes.thunks';
 const SuperheroCard = ({superheroes}) => {
   const dispatch = useDispatch();
 
-  // const handleView = (e) => {
-  //   const id = e.target.id;
-  //   console.log(id);
-  //   return id
-  // }
-
   const handleDelete = (e) => {
     const id = e.target.id;
     console.log(e.target.id);
@@ -51,8 +45,7 @@ const SuperheroCard = ({superheroes}) => {
               className='view-btn'
               component={Link}
               id={superhero._id}
-              to={`/view/${superhero._id}`} 
-              // onClick={handleView}      
+              to={`/view/${superhero._id}`}
               color='secondary' 
               variant='contained'
             >

@@ -8,8 +8,7 @@ const UseStylesHeader = makeStyles({
             background: 'rgb(228,221,244)',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center', 
-            position: 'relative'   
+            justifyContent: 'space-between', 
         },
         '.header-logo-title' : {
             margin: '10px 15px',                   
@@ -19,9 +18,6 @@ const UseStylesHeader = makeStyles({
             color: 'rgb(45,45,45)',
             cursor: 'pointer',
         },
-        '.header-btn': {
-            position: 'absolute',
-        }
     }
 })
 
