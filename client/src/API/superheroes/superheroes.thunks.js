@@ -17,6 +17,7 @@ export const createSuperheroe = (createSuperheroeData) => {
             body: JSON.stringify(createSuperheroeData),
         }).then(res => res.json())
         .then(createSuperheroe => {
+            console.log(createSuperheroeData);
             dispatch(createSuperheroeRequest(createSuperheroe));
         }).catch(err => {
             dispatch(setError(err));

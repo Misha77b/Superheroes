@@ -3,6 +3,7 @@ const cors = require('cors');
 const config = require('config');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const passport = require('passport');
 
 const superheroRouter = require('./routes/superheroes');
 
@@ -15,6 +16,9 @@ app.use(bodyParser.json());
 // DB Config
 const PORT = config.get('serverPort');
 const db = config.get('dbUrl')
+
+// Passport middleware
+app.use(passport.initialize());
 
 // Connect to MongoDB
 mongoose

@@ -7,12 +7,13 @@ exports.GetSuperheroes = async (req, res) => {
 
 exports.PostSuperhero = async (req, res) => {
     const newSuperhero = req.body;
-    const createdSuperher = await Superhero.create(newSuperhero);
-    res.send(createdSuperher);
+    const createdSuperhero = await Superhero(newSuperhero);
+    createdSuperhero
+        .save()
+        .then((result) => res.send(result))
 };
 
 exports.GetSuperheroById = async (req, res) => {
-    // params id serach is OK
     try{
         const id = req.params.id;
         if(!id) {
