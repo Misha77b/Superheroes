@@ -47,7 +47,9 @@ const CreateSuperheroModal = ({open, handleClose}) => {
             <CloseIcon />
           </Button>
           <div>
-            <ModalContent />
+            <ModalContent 
+              handleClose={handleClose}
+            />
           </div>
         </DialogContent>
       </Modal>
