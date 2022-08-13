@@ -6,4 +6,4 @@ Run up the server using **nodemon server**
 
 ## Second stage
 
-Open client fonder and run **npm start** command
+Open client folder and run **npm start** command
