@@ -1,22 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
-import { getSuperheroes } from '../../API/superheroes/superheroes.thunks';
+import SuperheroList from '../superheroList/SuperheroList';
 
 const Main = () => {
-  const dispatch = useDispatch();
-
-  const superheroes = useSelector((state) => state.superheroesReducer.superheroes);
-
-  useEffect(() => {
-    dispatch(getSuperheroes());
-  }, []);
-
-  console.log(superheroes);
 
   return (
-    <div>Main</div>
+    <div>
+      <SuperheroList />
+    </div>
   )
 }
 
 export default Main
+

@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 const ModalContent = () => {
+
   return (
-    <div>ModalContent</div>
+    <div>
+
+    </div>
   )
 }
 

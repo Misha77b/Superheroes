@@ -43,7 +43,7 @@ export const getSuperheroes = () => {
 
 export const getSuperheroe = (id) => {
     return (dispatch) => {
-        fetch(`http://localhost:5000/superheroes`, {
+        fetch(`http://localhost:5000/superheroes/${id}`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export const getSuperheroe = (id) => {
 
 export const updateSuperheroe = (superheroe) => {
     return (dispatch) => {
-        fetch(`http://localhost:5000/superheroes`, {
+        fetch(`http://localhost:5000/superheroes/${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -74,7 +74,7 @@ export const updateSuperheroe = (superheroe) => {
 
 export const deleteSuperheroe = (id) => {
     return (dispatch) => {
-        fetch (`http://localhost:5000/superheroes`, {
+        fetch (`http://localhost:5000/superheroes/${id}`, {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",

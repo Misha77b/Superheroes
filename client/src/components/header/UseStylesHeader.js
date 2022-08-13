@@ -5,7 +5,7 @@ const UseStylesHeader = makeStyles({
         '.header': {
             width: '100%',
             height: '80px',
-            background: 'white',
+            background: 'rgb(228,221,244)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center', 
@@ -14,9 +14,9 @@ const UseStylesHeader = makeStyles({
         '.header-logo-title' : {
             margin: '10px 15px',                   
             fontFamily: 'Roboto sans-serif',
-            fontSize: '24px',
+            fontSize: '30px',
             fontWeight: '700',
-            color: 'black',
+            color: 'rgb(45,45,45)',
             cursor: 'pointer',
         },
         '.header-btn': {

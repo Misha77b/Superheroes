@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux';
 import UseStylesHeader from './UseStylesHeader';
 import Button from '@mui/material/Button';
 import CreateSuperheroModal from '../modal/CreateSuperheroModal';
@@ -26,9 +25,9 @@ const Header = () => {
             className='header-btn'
             sx={{
               margin: '10px 50px',
-              border: '2px solid black',
+              border: '2px solid #2D2D2D',
               background: 'transparent',
-              color: 'black',
+              color: '#2D2D2D',
               borderRadius: '5px',
               position: 'absolute',
               right: '0'

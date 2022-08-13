@@ -11,8 +11,8 @@ const router = new Router();
 
 router.get('/', GetSuperheroes);
 router.post('/', PostSuperhero);
-router.get('/:id', GetSuperheroById);
-router.put('/:id', UpdateSuperhero);
+router.get('/view/:id', GetSuperheroById);
+router.put('/view/:id', UpdateSuperhero);
 router.delete('/:id', DeleteSuperhero);
 
 module.exports = router;
