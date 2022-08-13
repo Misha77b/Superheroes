@@ -13,7 +13,7 @@ const router = new Router();
 router.get('/', GetSuperheroes);
 router.post('/', PostSuperhero);
 router.get('/:id', GetSuperheroById);
-router.patch('/:id', UpdateSuperhero);
+router.put('/:id', UpdateSuperhero);
 router.delete('/:id', DeleteSuperhero);
 
 module.exports = router;

@@ -1,3 +1,4 @@
+const { serializeUser } = require('passport');
 const Superhero = require('../models/superhero');
 
 exports.GetSuperheroes = async (req, res) => {
@@ -16,40 +17,41 @@ exports.PostSuperhero = async (req, res) => {
 
 exports.GetSuperheroById = async (req, res) => {
     // params id serach is OK
-    const id = req.params.id;
-    console.log(id);
-
-    console.log(Superhero.find((hero) => hero.name));
-    // const getSuperheroe = Superhero.findOne((hero) => {
-    //     return hero._id === id
-    // })
-    res.send(id);
-    
-    // Superhero.findOne({
-    //     itemNo: req.params._id
-    // })
-    // .then(hero => {
-        // if (!hero) {
-        //     res.status(400).json({
-        //     message: `Product with itemNo ${req.params.itemNo} is not found`
-        // });
-        // } else {
-            // res.json(hero);
-        // }
-    // })
-    // .catch(err =>
-    //     res.status(400).json({
-    //         message: `Error happened on server: "${err}" `
-    //     })
-    // );
+    try{
+        const id = req.params.id;
+        if(!id) {
+            res.status(400).json({message: 'Id is not defined'});
+        }
+        const superhero = await Superhero.findById(id);
+        return res.json(superhero);
+    } catch(e) {
+        res.status(500).json(e);
+    }
 };
 
 exports.UpdateSuperhero = async (req, res) => {
-    const id = req.params.id;
-    const updatedSuperhero = Superhero.findByIdAndUpdate(id, req.body, { useFindAndModify: false })
+    try{
+        const id = req.params.id;
+        const superhero = req.body;
+        if(!id){
+            res.status(400).json({message: 'Id is not defined'});
+        }
+        const updatedSuperhero = await Superhero.findByIdAndUpdate(id, superhero, {new: true});
+        return res.json(updatedSuperhero);
+    } catch(e) {
+        res.status(500).json(e);
+    }
 };
 
 exports.DeleteSuperhero = async (req, res) => {
-    const id = req.params.id;
-
+    try{
+        const id = req.params.id;
+        if(!id){
+            res.status(400).json({message: 'Id is not defined'});
+        }
+        const superhero = await Superhero.findByIdAndDelete(id);
+        return res.json(superhero)
+    } catch(e) {
+        res.status(500).json(e);
+    }
 };
