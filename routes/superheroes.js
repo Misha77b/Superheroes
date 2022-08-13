@@ -18,12 +18,33 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
+    // params id serach is OK
     const id = req.params.id;
-    const getSuperheroe = Superhero.find((hero) => {
-        console.log(hero.id === id);
-        // return hero.id === id
-    })
-    res.send(getSuperheroe);
+    console.log(id);
+
+    console.log(Superhero.find((hero) => hero.name));
+    // const getSuperheroe = Superhero.findOne((hero) => {
+    //     return hero._id === id
+    // })
+    res.send(id);
+    
+    // Superhero.findOne({
+    //     itemNo: req.params._id
+    // })
+    // .then(hero => {
+        // if (!hero) {
+        //     res.status(400).json({
+        //     message: `Product with itemNo ${req.params.itemNo} is not found`
+        // });
+        // } else {
+            // res.json(hero);
+        // }
+    // })
+    // .catch(err =>
+    //     res.status(400).json({
+    //         message: `Error happened on server: "${err}" `
+    //     })
+    // );
 })
 
 router.patch('/:id', async (req, res) => {
