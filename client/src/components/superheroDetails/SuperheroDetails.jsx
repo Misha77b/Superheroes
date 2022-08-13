@@ -26,7 +26,11 @@ const SuperheroDetails = () => {
         <img className='superhero-image' src={superheroe.Images} alt={superheroe.nickname} />
       </div>
       <div className='info-container'>
-        <span>{superheroe.nickname}</span>
+        <span>{superheroe.nickname}</span> <br />
+        <span>{superheroe.real_name}</span>
+        <p>{superheroe.origin_description}</p>
+        <p>{superheroe.superpowers}</p>
+        <p>{superheroe.catch_phrase}</p>
       </div>
     </div>
   )
