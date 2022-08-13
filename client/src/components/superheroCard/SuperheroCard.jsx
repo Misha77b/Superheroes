@@ -2,6 +2,12 @@ import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import Card from '@mui/material/Card';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 
@@ -12,6 +18,7 @@ const SuperheroCard = ({superheroes}) => {
 
   const elId = (e) => {
     const id = e.target.id;
+    console.log(id);
     return id
   }
 
@@ -24,25 +31,39 @@ const SuperheroCard = ({superheroes}) => {
   return (
     <>
       {superheroes.map((superhero) => {
-        return <div className='superhero-card' key={superhero._id}>
-          <img></img>
-          <span>{superhero.nickname}</span>
-          <Button
-              className='view-btn'      
+        return <Card sx={{width: 345, margin: '20px',}} className='superhero-card' key={superhero._id}>
+          <CardActionArea>
+            <CardMedia
+            sx={{height: 200, objectFit: 'cover',}}
+              image={superhero.Images}
+              title={superhero.nickname}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h2">
+                {superhero.nickname}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+          <CardActions
+            sx={{display: 'flex', justifyContent: 'space-around'}}
+          >
+            <Button
+              className='view-btn'
               component={Link}
               id={superhero._id}
               to={`/view/${elId}`} 
-          >
+            >
               View
-          </Button>
-          <Button
+            </Button>
+            <Button
               className='delete_btn'
               onClick={handleDelete}
               id={superhero._id}
-          >
+            >
               Delete
-          </Button>
-        </div>
+            </Button>
+          </CardActions>
+        </Card>
       })}
     </>
   )

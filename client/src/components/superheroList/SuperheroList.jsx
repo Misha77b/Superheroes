@@ -1,22 +1,11 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import useStylesSuperheroList from './useStylesSuperheroList';
-
-import { getSuperheroes } from '../../API/superheroes/superheroes.thunks';
-
 import SuperheroCard from '../superheroCard/SuperheroCard'
 
-const SuperheroList = () => {
-  const dispatch = useDispatch();
+const SuperheroList = ({superheroes}) => {
   useStylesSuperheroList()
-
-  const superheroes = useSelector((state) => state.superheroesReducer.superheroes);
-
-  useEffect(() => {
-    dispatch(getSuperheroes());
-  }, []);
-
-  console.log(superheroes);
 
   return (
     <div className='superheroList'>
@@ -28,3 +17,7 @@ const SuperheroList = () => {
 }
 
 export default SuperheroList
+
+SuperheroList.propTypes = {
+  superheroes: PropTypes.array,
+}
