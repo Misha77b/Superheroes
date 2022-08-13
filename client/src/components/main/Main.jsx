@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { getSuperheroes } from '../../API/superheroes/superheroes.thunks';
 import SuperheroList from '../superheroList/SuperheroList';
-import Superhero from '..//superhero/Superhero';
+import SuperheroPage from '..//superheroPage/SuperheroPage';
 
 const Main = () => {
   const dispatch = useDispatch(); 
@@ -19,8 +19,9 @@ const Main = () => {
       main: () => <SuperheroList superheroes={superheroes} />,
     },
     {
-      path: "/view",
-      main: () => <Superhero superheroes={superheroes} />,
+      // I should put superhero id to the path
+      path: "/view/:pageId",
+      main: () => <SuperheroPage superheroes={superheroes} />,
     }
   ]; 
 

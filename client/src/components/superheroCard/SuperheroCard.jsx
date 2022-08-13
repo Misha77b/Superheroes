@@ -34,7 +34,7 @@ const SuperheroCard = ({superheroes}) => {
         return <Card sx={{width: 345, margin: '20px',}} className='superhero-card' key={superhero._id}>
           <CardActionArea>
             <CardMedia
-            sx={{height: 200, objectFit: 'cover',}}
+            sx={{height: 250, objectFit: 'cover',}}
               image={superhero.Images}
               title={superhero.nickname}
             />
@@ -52,7 +52,9 @@ const SuperheroCard = ({superheroes}) => {
               component={Link}
               id={superhero._id}
               to={`/view/${handleView}`} 
-              onClick={handleView}
+              onClick={handleView}              
+              color='secondary' 
+              variant='contained'
             >
               View
             </Button>
@@ -60,6 +62,8 @@ const SuperheroCard = ({superheroes}) => {
               className='delete_btn'
               onClick={handleDelete}
               id={superhero._id}
+              color='error' 
+              variant='contained'
             >
               Delete
             </Button>
