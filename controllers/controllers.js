@@ -1,4 +1,3 @@
-const { serializeUser } = require('passport');
 const Superhero = require('../models/superhero');
 
 exports.GetSuperheroes = async (req, res) => {
@@ -8,11 +7,8 @@ exports.GetSuperheroes = async (req, res) => {
 
 exports.PostSuperhero = async (req, res) => {
     const newSuperhero = req.body;
-    console.log(newSuperhero);
-
-    const response = await Superhero.create(newSuperhero);
-    console.log(response);
-    res.send("ok");
+    const createdSuperher = await Superhero.create(newSuperhero);
+    res.send(createdSuperher);
 };
 
 exports.GetSuperheroById = async (req, res) => {

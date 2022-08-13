@@ -1,6 +1,4 @@
 const Router = require("express");
-// const { appendFile } = require("fs-extra");
-const Superhero = require('../models/superhero');
 const {
     GetSuperheroes, 
     PostSuperhero,
@@ -8,6 +6,7 @@ const {
     UpdateSuperhero,
     DeleteSuperhero
 } = require('../controllers/controllers')
+
 const router = new Router();
 
 router.get('/', GetSuperheroes);

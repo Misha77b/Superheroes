@@ -6,12 +6,10 @@ const mongoose = require('mongoose');
 
 const superheroRouter = require('./routes/superheroes');
 
-
 const app = express();
 app.use(cors());
 
 // Body parser middleware
-// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // DB Config
@@ -26,9 +24,9 @@ mongoose
 
 
 // Use Routes
-// test app get request
 app.use('/superheroes', superheroRouter)
 
+// PORT
 app.listen(PORT, function () {
   console.log(`Listening on ${PORT}`);
 });
