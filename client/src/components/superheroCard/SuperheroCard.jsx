@@ -16,7 +16,7 @@ import { deleteSuperheroe } from '../../API/superheroes/superheroes.thunks';
 const SuperheroCard = ({superheroes}) => {
   const dispatch = useDispatch();
 
-  const elId = (e) => {
+  const handleView = (e) => {
     const id = e.target.id;
     console.log(id);
     return id
@@ -51,7 +51,8 @@ const SuperheroCard = ({superheroes}) => {
               className='view-btn'
               component={Link}
               id={superhero._id}
-              to={`/view/${elId}`} 
+              to={`/view/${handleView}`} 
+              onClick={handleView}
             >
               View
             </Button>

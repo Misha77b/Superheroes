@@ -50,7 +50,7 @@ const superheroesReducer = (state = initState, action) => {
         case UPDATE_SUPERHEROE_SUCCESS: {
             return {
                 ...state, 
-                superheroes: state.superheroes.map((superheroe) => {superheroe.id === action.payload.id ? updatedVisit : superheroe}),
+                superheroes: state.superheroes.map((superheroe) => {superheroe._id === action.payload ? updatedVisit : superheroe}),
                 superheroeId: null
             }
         }
@@ -59,7 +59,7 @@ const superheroesReducer = (state = initState, action) => {
             return {
                 ...state,
                 deleteSuperheroeRequest: action.payload,
-                superheroes: state.superheroes.filter((superheroe) => superheroe.id !== action.payload)
+                superheroes: state.superheroes.filter((superheroe) => superheroe._id !== action.payload)
             }
         }
 
