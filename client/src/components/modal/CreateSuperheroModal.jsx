@@ -37,11 +37,11 @@ const CreateSuperheroModal = ({open, handleClose}) => {
             onClick={handleClose}
             disableRipple={true}
             sx={{
-                position: 'absolute',
-                color: 'black',
-                right: '-10px',
-                top: '10px',
-                padding: '0'
+              position: 'absolute',
+              color: 'black',
+              right: '-10px',
+              top: '10px',
+              padding: '0'
             }}
           >
             <CloseIcon />
