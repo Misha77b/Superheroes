@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material//TextField';
 import PropTypes from 'prop-types';
 
-import { createSuperheroeRequest } from '../../../API/superheroes/superheroes.actions';
+import { createSuperheroe } from '../../../API/superheroes/superheroes.thunks';
 
 const style={                
   display: 'flex', 
@@ -48,7 +48,7 @@ const ModalContent = ({ handleClose }) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      const createSuperheroe = {
+      const createSuperheroeData = {
         nickname: values.nickname,
         real_name: values.real_name,
         origin_description: values.origin_description,
@@ -56,7 +56,7 @@ const ModalContent = ({ handleClose }) => {
         catch_phrase: values.catch_phrase,
         Images: values.Images,
       }
-      dispatch(createSuperheroeRequest(createSuperheroe));
+      dispatch(createSuperheroe(createSuperheroeData));
       handleClose();
     },
   });
