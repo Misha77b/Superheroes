@@ -7,7 +7,7 @@ exports.GetSuperheroes = async (req, res) => {
 
 exports.PostSuperhero = async (req, res) => {
     const newSuperhero = req.body;
-    const createdSuperhero = await Superhero(newSuperhero);
+    const createdSuperhero = await Superhero.create(newSuperhero);
     createdSuperhero
         .save()
         .then((result) => res.send(result))
