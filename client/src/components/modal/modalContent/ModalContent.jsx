@@ -126,7 +126,7 @@ const ModalContent = ({ handleClose }) => {
         id="Images"
         name="Images"
         label="Image url"
-        // type="file"
+        type="file"
         value={formik.values.Images}
         onChange={formik.handleChange}
         error={formik.touched.Images && Boolean(formik.errors.Images)}
