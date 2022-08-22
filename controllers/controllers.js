@@ -1,26 +1,4 @@
 const Superhero = require('../models/superhero');
-const multer = require("multer");
-const moment = require("moment");
-
-//  image upload
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, './images/');
-    },
-    filename: (req, file, cb) => {
-        cb(null, file.originalname);
-    }
-})
-
-const fileFilter = (req, file, cb) => {
-    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
-        cb(null, true);
-    } else {
-        cb(null, false);
-    }
-};
-
-const uploads = multer({ storage: storage });
 
 exports.GetSuperheroes = async (req, res) => {
     const superheroes = await Superhero.find({});
@@ -29,13 +7,14 @@ exports.GetSuperheroes = async (req, res) => {
 
 exports.PostSuperhero = async (req, res) => {
     // const Images = req.file ? req.file.path : '';
+    // req.body.images = req.file.images;
     const newSuperhero = { 
-        nickname, 
-        real_name, 
-        origin_description, 
-        superpowers, 
-        catch_phrase, 
-        Images= req.file.Images
+        nickname = req.body.nickname, 
+        real_name = req.body/real_name, 
+        origin_description = req.body.origin_description, 
+        superpowers = req.body.superpowers, 
+        catch_phrase = req.body.catch_phrase, 
+        images = req.file.images
     } = req.body;
     // const newSuperhero  = req.body;
     const createdSuperhero = await Superhero.create(newSuperhero);

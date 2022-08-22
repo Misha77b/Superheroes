@@ -44,7 +44,7 @@ const ModalContent = ({ handleClose }) => {
       origin_description: '',
       superpowers: '',
       catch_phrase:  '',
-      Images:  '',
+      images:  '',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -54,7 +54,7 @@ const ModalContent = ({ handleClose }) => {
         origin_description: values.origin_description,
         superpowers: values.superpowers,
         catch_phrase: values.catch_phrase,
-        Images: values.Images,
+        images: values.images,
       }
       dispatch(createSuperheroe(createSuperheroeData));
       handleClose();
@@ -123,14 +123,14 @@ const ModalContent = ({ handleClose }) => {
 
       <TextField  
         fullWidth
-        id="Images"
-        name="Images"
-        label="Image url"
+        id="images"
+        name="images"
+        label="Images url"
         type="file"
-        value={formik.values.Images}
+        value={formik.values.images}
         onChange={formik.handleChange}
-        error={formik.touched.Images && Boolean(formik.errors.Images)}
-        helperText={formik.touched.Images && formik.errors.Images}
+        error={formik.touched.images && Boolean(formik.errors.images)}
+        helperText={formik.touched.images && formik.errors.images}
       />
 
       <Button sx={{

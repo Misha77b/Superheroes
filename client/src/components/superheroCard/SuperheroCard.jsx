@@ -29,8 +29,8 @@ const SuperheroCard = ({superheroes}) => {
           <CardActionArea>
             <CardMedia
             sx={{height: 250, objectFit: 'cover',}}
-              image={superhero.Images}
-              // image={`../../.././images/${superhero.Images}`}
+              // image={superhero.images}
+              image={`../../.././images/${superhero.images}`}
               title={superhero.nickname}
             />
             <CardContent>
