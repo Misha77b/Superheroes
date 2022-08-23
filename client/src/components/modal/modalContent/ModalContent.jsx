@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import Button from '@mui/material/Button';
 import TextField from '@mui/material//TextField';
-import PropTypes from 'prop-types';
 
 import { createSuperheroe } from '../../../API/superheroes/superheroes.thunks';
 

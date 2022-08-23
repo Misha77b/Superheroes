@@ -18,7 +18,6 @@ const SuperheroCard = ({superheroes}) => {
 
   const handleDelete = (e) => {
     const id = e.target.id;
-    console.log(e.target.id);
     dispatch(deleteSuperheroe(id));
   }
   
@@ -30,7 +29,7 @@ const SuperheroCard = ({superheroes}) => {
             <CardMedia
             sx={{height: 250, objectFit: 'cover',}}
               // image={superhero.images}
-              image={`../../.././images/${superhero.images}`}
+              image={`../../.././storage/${superhero.images}`}
               title={superhero.nickname}
             />
             <CardContent>
