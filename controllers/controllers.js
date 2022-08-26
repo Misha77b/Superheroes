@@ -10,7 +10,7 @@ exports.PostSuperhero = async (req, res) => {
     // req.body.images = req.file.images;
     const newSuperhero = { 
         nickname = req.body.nickname, 
-        real_name = req.body/real_name, 
+        real_name = req.body.real_name, 
         origin_description = req.body.origin_description, 
         superpowers = req.body.superpowers, 
         catch_phrase = req.body.catch_phrase, 
