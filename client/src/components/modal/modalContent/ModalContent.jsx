@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import UseStylesModalContent from './UseStylesModalContent';
 import PropTypes from 'prop-types';
 
-import { useFormik } from 'formik';
 import * as yup from 'yup';
 
 import Button from '@mui/material/Button';
-import TextField from '@mui/material//TextField';
 
 import { createSuperheroe } from '../../../API/superheroes/superheroes.thunks';
+import { useState } from 'react';
 
 const style={                
   display: 'flex', 
@@ -36,102 +36,106 @@ const validationSchema = yup.object({
 
 const ModalContent = ({ handleClose }) => {
   const dispatch = useDispatch();
+  UseStylesModalContent();
 
-  const formik = useFormik({
-    initialValues: {
-      nickname: '',
-      real_name: '',
-      origin_description: '',
-      superpowers: '',
-      catch_phrase:  '',
-      images:  '',
-    },
-    validationSchema: validationSchema,
-    onSubmit: (values) => {
-      const createSuperheroeData = {
-        nickname: values.nickname,
-        real_name: values.real_name,
-        origin_description: values.origin_description,
-        superpowers: values.superpowers,
-        catch_phrase: values.catch_phrase,
-        images: values.images,
-      }
-      dispatch(createSuperheroe(createSuperheroeData));
-      handleClose();
-    },
-  });
+  const [nickname, setNickname] = useState("");
+  const [real_name, setReal_name] = useState("");
+  const [origin_description, setOrigin_description] = useState("");
+  const [superpowers, setSuperpowers] = useState("");
+  const [catch_phrase, setCatch_phrase] = useState("");
+  const [images, setImages] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const createSuperheroeData = {
+      nickname,
+      real_name,
+      origin_description,
+      superpowers,
+      catch_phrase,
+      images,
+    }
+    dispatch(createSuperheroe(createSuperheroeData));
+    handleClose();
+  }
 
   return (
-    <form
+    <form 
       style={style}
-      onSubmit={formik.handleSubmit}  
+      onSubmit={handleSubmit}  
     >
-      <TextField  
-        fullWidth
-        id="nickname"
-        name="nickname"
-        label="Nickname"
-        value={formik.values.nickname}
-        onChange={formik.handleChange}
-        error={formik.touched.nickname && Boolean(formik.errors.nickname)}
-        helperText={formik.touched.nickname && formik.errors.nickname}
-      />
+      <div className="form-group">
+        <label>Nickname</label>
+        <input 
+          value={nickname}
+          onChange={(e) => {setNickname(e.target.value)}}
+          type="text" 
+          className="form-control" 
+          id="nickname" 
+          placeholder="Nickname" 
+        />
+      </div>
 
-      <TextField  
-        fullWidth
-        id="real_name"
-        name="real_name"
-        label="Real name"
-        value={formik.values.real_name}
-        onChange={formik.handleChange}
-        error={formik.touched.real_name && Boolean(formik.errors.real_name)}
-        helperText={formik.touched.real_name && formik.errors.real_name}
-      />
+      <div className="form-group">
+        <label>Real name</label>
+        <input 
+          value={real_name}
+          onChange={(e) => {setReal_name(e.target.value)}}
+          type="text" 
+          className="form-control" 
+          id="real_name" 
+          placeholder="Real name" 
+        />
+      </div>
 
-      <TextField  
-        fullWidth
-        id="origin_description"
-        name="origin_description"
-        label="Origin description"
-        value={formik.values.origin_description}
-        onChange={formik.handleChange}
-        error={formik.touched.origin_description && Boolean(formik.errors.origin_description)}
-        helperText={formik.touched.origin_description && formik.errors.origin_description}
-      />
-      
-      <TextField  
-        fullWidth
-        id="superpowers"
-        name="superpowers"
-        label="Superpowers"
-        value={formik.values.superpowers}
-        onChange={formik.handleChange}
-        error={formik.touched.superpowers && Boolean(formik.errors.superpowers)}
-        helperText={formik.touched.superpowers && formik.errors.superpowers}
-      />
+      <div className="form-group">
+        <label>Origin description</label>
+        <textarea 
+          value={origin_description}
+          onChange={(e) => {setOrigin_description(e.target.value)}}
+          type="article" 
+          className="form-control" 
+          id="origin_description" 
+          placeholder="Origin description" 
+        />
+      </div>
 
-      <TextField  
-        fullWidth
-        id="catch_phrase"
-        name="catch_phrase"
-        label="Catch phrase"
-        value={formik.values.catch_phrase}
-        onChange={formik.handleChange}
-        error={formik.touched.catch_phrase && Boolean(formik.errors.catch_phrase)}
-        helperText={formik.touched.catch_phrase && formik.errors.catch_phrase}
-      />
+      <div className="form-group">
+        <label>Superpowers</label>
+        <textarea 
+          value={superpowers}
+          onChange={(e) => {setSuperpowers(e.target.value)}}
+          type="article" 
+          className="form-control" 
+          id="superpowers" 
+          placeholder="Superpowers" 
+        />
+      </div>
 
-      <TextField  
-        fullWidth
-        id="images"
-        name="images"
-        label="Images url"
-        type="file"
-        value={formik.values.images}
-        onChange={formik.handleChange}
-        error={formik.touched.images && Boolean(formik.errors.images)}
-        helperText={formik.touched.images && formik.errors.images}
-      />
+      <div className="form-group">
+        <label>Catch phrase</label>
+        <textarea 
+          value={catch_phrase}
+          onChange={(e) => {setCatch_phrase(e.target.value)}}
+          type="article" 
+          className="form-control" 
+          id="catch_phrase" 
+          placeholder="Catch phrase" 
+        />
+      </div>
+
+      <div className="form-group">
+        <label>Upload images</label>
+        <input 
+          value={images}
+          onChange={(e) => {setImages(e.target.value)}}
+          type="file" 
+          className="form-control" 
+          id="images" 
+          placeholder="Upload images" 
+        />
+      </div>
 
       <Button sx={{
           width: '220px', 
