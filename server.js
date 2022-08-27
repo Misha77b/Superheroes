@@ -9,7 +9,6 @@ const superheroRouter = require('./routes/superheroes');
 
 const app = express();
 app.use(cors());
-// app.use(fileUpload({}))
 
 // Body parser middleware
 app.use(bodyParser.json());

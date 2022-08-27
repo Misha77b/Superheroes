@@ -6,6 +6,7 @@ exports.GetSuperheroes = async (req, res) => {
 };
 
 exports.PostSuperhero = async (req, res) => {
+    console.log(req.file);
     const newSuperhero = { 
         nickname = req.body.nickname, 
         real_name = req.body.real_name, 

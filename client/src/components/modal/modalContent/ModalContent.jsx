@@ -28,20 +28,21 @@ const ModalContent = ({ handleClose }) => {
   const [images, setImages] = useState("");
 
   const handleUploadImage = (e) => {
-    setImages(e.target.file[0]);
+    setImages(e.target.files[0]);
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const createSuperheroeData = new FormData();
-
-      createSuperheroeData.append("nickname", nickname);
-      createSuperheroeData.append("real_name", real_name);
-      createSuperheroeData.append("origin_description", origin_description);
-      createSuperheroeData.append("superpowers", superpowers);
-      createSuperheroeData.append("catch_phrase", catch_phrase);
-      createSuperheroeData.append("images", images);
+    createSuperheroeData.append("nickname", nickname);
+    createSuperheroeData.append("real_name", real_name);
+    createSuperheroeData.append("origin_description", origin_description);
+    createSuperheroeData.append("superpowers", superpowers);
+    createSuperheroeData.append("catch_phrase", catch_phrase);
+    createSuperheroeData.append("images", images);
+    
+    console.log(images);
     
     setNickname("");
     setReal_name("");
@@ -58,6 +59,7 @@ const ModalContent = ({ handleClose }) => {
     <form 
       style={style}
       onSubmit={handleSubmit}  
+      encType="multipart/form-data"
     >
       <div className="form-group">
         <label>Nickname</label>
@@ -122,12 +124,13 @@ const ModalContent = ({ handleClose }) => {
       <div className="form-group">
         <label>Upload images</label>
         <input 
-          value={images}
-          onChange={(e) => {setImages(e.target.value)}}
+          // value={images}
+          onChange={handleUploadImage}
           type="file" 
           className="form-control" 
           id="images" 
           placeholder="Upload images" 
+          filename="images"
         />
       </div>
 
