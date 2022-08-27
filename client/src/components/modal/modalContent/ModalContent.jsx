@@ -126,11 +126,11 @@ const ModalContent = ({ handleClose }) => {
         <input 
           // value={images}
           onChange={handleUploadImage}
+          name="images"
           type="file" 
           className="form-control" 
           id="images" 
           placeholder="Upload images" 
-          filename="images"
         />
       </div>
 
