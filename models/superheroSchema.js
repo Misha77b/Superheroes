@@ -24,7 +24,7 @@ const superheroSchema = new Schema({
     },
     images: {
         type: String,
-        default: "none",
+        // default: "none",
         required: true
     }
 });

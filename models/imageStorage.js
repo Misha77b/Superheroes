@@ -2,14 +2,13 @@ const multer = require("multer");
 const moment = require("moment");
 
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'images/')
+    destination: (req, file, callback) => {
+        callback(null, './client/public/assets/');
     },
-    filename: (req, file, cb) => {
-        // const date = moment.format(`DDMMYYYY-HHmmss_SSS`);
-        cb(null, file.originalname);
+    filename: (req, file, callback) => {
+        callback(null, file.originalname);
     }
-});
+})
 
 
 const fileFilter = (req, file, cb) => {

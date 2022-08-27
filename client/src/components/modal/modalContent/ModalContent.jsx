@@ -16,24 +16,6 @@ const style={
   gap: '10px',
 }
 
-const validationSchema = yup.object({
-  nickname: yup.string()
-    .nullable()
-    .required('Nickname is required'),
-  real_name: yup.string()
-    .nullable()
-    .required('Real name is required'),
-  origin_description: yup.string()
-    .nullable()
-    .required('Is required'),
-  superpowers: yup.string()
-    .nullable()
-    .required('Is required'),
-  catch_phrase: yup.string()
-    .nullable()
-    .required('Is required')
-});
-
 const ModalContent = ({ handleClose }) => {
   const dispatch = useDispatch();
   UseStylesModalContent();
@@ -45,17 +27,29 @@ const ModalContent = ({ handleClose }) => {
   const [catch_phrase, setCatch_phrase] = useState("");
   const [images, setImages] = useState("");
 
+  const handleUploadImage = (e) => {
+    setImages(e.target.file[0]);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const createSuperheroeData = {
-      nickname,
-      real_name,
-      origin_description,
-      superpowers,
-      catch_phrase,
-      images,
-    }
+    const createSuperheroeData = new FormData();
+
+      createSuperheroeData.append("nickname", nickname);
+      createSuperheroeData.append("real_name", real_name);
+      createSuperheroeData.append("origin_description", origin_description);
+      createSuperheroeData.append("superpowers", superpowers);
+      createSuperheroeData.append("catch_phrase", catch_phrase);
+      createSuperheroeData.append("images", images);
+    
+    setNickname("");
+    setReal_name("");
+    setOrigin_description("");
+    setSuperpowers("");
+    setCatch_phrase("");
+    setImages("");
+
     dispatch(createSuperheroe(createSuperheroeData));
     handleClose();
   }

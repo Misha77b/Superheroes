@@ -1,4 +1,4 @@
-const Superhero = require('../models/superhero');
+const Superhero = require('../models/superheroSchema');
 
 exports.GetSuperheroes = async (req, res) => {
     const superheroes = await Superhero.find({});
@@ -6,8 +6,6 @@ exports.GetSuperheroes = async (req, res) => {
 };
 
 exports.PostSuperhero = async (req, res) => {
-    // const Images = req.file ? req.file.path : '';
-    // req.body.images = req.file.images;
     const newSuperhero = { 
         nickname = req.body.nickname, 
         real_name = req.body.real_name, 
