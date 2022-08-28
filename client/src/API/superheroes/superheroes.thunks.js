@@ -14,7 +14,7 @@ export const createSuperheroe = (createSuperheroeData) => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(createSuperheroeData),
+            body: JSON.stringify(createSuperheroeData), //try wothout JSON.stringify
         }).then(res => res.json())
         .then(createSuperheroe => {
             dispatch(createSuperheroeRequest(createSuperheroe));
