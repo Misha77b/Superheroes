@@ -1,7 +1,7 @@
 const Router = require("express");
 const multer = require("multer");
 // const uploads = require("../models/imageStorage");
-const path = require ('path')
+const path = require ('path');
 
 const {
     GetSuperheroes, 
@@ -17,11 +17,11 @@ const storage = multer.diskStorage({
         callback(null, './client/public/assets/');
     },
     filename: (req, file, callback) => {
-        callback(null, file.originalname);
+        callback(null, file.originalname + path.extname(file.originalname));
     }
 })
 
-const uploads = multer({ storage: storage, limits: {fileSize: 1024 * 1024 * 5} });
+const uploads = multer({ storage: storage, limits: { fieldSize: 10 * 1024 * 1024 } });
 
 const router = new Router();
 

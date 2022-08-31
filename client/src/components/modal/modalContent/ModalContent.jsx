@@ -42,16 +42,17 @@ const ModalContent = ({ handleClose }) => {
     createSuperheroeData.append("catch_phrase", catch_phrase);
     createSuperheroeData.append("images", images);
     
-    console.log(images);
+    console.log(images);    
+    console.log(createSuperheroeData);
     
+    dispatch(createSuperheroe(createSuperheroeData));
+
     setNickname("");
     setReal_name("");
     setOrigin_description("");
     setSuperpowers("");
     setCatch_phrase("");
     setImages("");
-
-    dispatch(createSuperheroe(createSuperheroeData));
     handleClose();
   }
 

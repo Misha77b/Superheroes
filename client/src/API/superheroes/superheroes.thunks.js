@@ -8,13 +8,14 @@ import {
 import { setError } from "../errorHandler/errorHandler.actions";
 
 export const createSuperheroe = (createSuperheroeData) => {
+    // console.log(createSuperheroeData);
     return (dispatch) => {
         fetch(`http://localhost:5000/superheroes`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(createSuperheroeData), //try wothout JSON.stringify
+            body: JSON.stringify(createSuperheroeData), //try without JSON.stringify
         }).then(res => res.json())
         .then(createSuperheroe => {
             dispatch(createSuperheroeRequest(createSuperheroe));

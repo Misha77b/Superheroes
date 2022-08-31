@@ -12,6 +12,8 @@ app.use(cors());
 
 // Body parser middleware
 app.use(bodyParser.json());
+app.use(bodyParser.json({limit: "50mb"}));
+app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 
 // DB Config
 const PORT = config.get('serverPort');
