@@ -35,12 +35,16 @@ const ModalContent = ({ handleClose }) => {
     e.preventDefault();
 
     const createSuperheroeData = new FormData();
+    
     createSuperheroeData.append("nickname", nickname);
     createSuperheroeData.append("real_name", real_name);
     createSuperheroeData.append("origin_description", origin_description);
     createSuperheroeData.append("superpowers", superpowers);
     createSuperheroeData.append("catch_phrase", catch_phrase);
     createSuperheroeData.append("images", images);
+    for (let key of createSuperheroeData.entries()) {
+      console.log(key[0] + ', ' + key[1]);
+    }
     
     console.log(images);    
     console.log(createSuperheroeData);

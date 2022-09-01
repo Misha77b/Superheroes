@@ -6,21 +6,26 @@ exports.GetSuperheroes = async (req, res) => {
 };
 
 exports.PostSuperhero = async (req, res) => {
-    console.log(req.file);
-    console.log(req.body);
-    const newSuperhero = await new Superhero ({ 
-        nickname: req.body.nickname, 
-        real_name: req.body.real_name, 
-        origin_description: req.body.origin_description, 
-        superpowers: req.body.superpowers, 
-        catch_phrase: req.body.catch_phrase, 
-        images: req.file.images
-    })
-    // const newSuperhero  = req.body;
-    // const createdSuperhero = await Superhero.create(newSuperhero);
-    createdSuperhero
-        .save()
-        .then((result) => res.send(result))
+    try{
+        console.log(req.file);
+        console.log(req.body);
+        const newSuperhero = await new Superhero ({ 
+            nickname: req.body.nickname, 
+            real_name: req.body.real_name, 
+            origin_description: req.body.origin_description, 
+            superpowers: req.body.superpowers, 
+            catch_phrase: req.body.catch_phrase, 
+            images: req.file.filename
+            // images: req.file.path
+        })
+        // const newSuperhero  = req.body;
+        // const createdSuperhero = await Superhero.create(newSuperhero);
+        newSuperhero
+            .save()
+            .then((result) => res.send(result))
+    } catch (e) {
+        res.status(500).json(e);
+    }
 };
 
 exports.GetSuperheroById = async (req, res) => {
