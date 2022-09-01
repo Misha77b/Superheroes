@@ -23,7 +23,7 @@ const SuperheroDetails = () => {
   return (
     <div className="superheroDetails">
       <div className='img-container'>
-        <img className='superhero-image' src={superheroe.Images} alt={superheroe.nickname} />
+        <img className='superhero-image' src={`/assets/${superheroe.images}`} alt={superheroe.nickname} />
       </div>
       <div className='info-container'>
         <span>{superheroe.nickname}</span> <br />
