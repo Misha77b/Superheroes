@@ -12,9 +12,9 @@ export const createSuperheroe = (createSuperheroeData) => {
     return (dispatch) => {
         fetch(`http://localhost:5000/superheroes`, {
             method: 'POST',
-            headers: {
-                "Content-Type": "application/json",
-            },
+            // headers: {
+            //     "Content-Type": "application/json",
+            // },
             body: createSuperheroeData, //try without JSON.stringify
         }).then(res => res.json())
         .then(createSuperheroe => {
