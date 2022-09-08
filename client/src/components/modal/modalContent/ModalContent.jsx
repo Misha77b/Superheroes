@@ -10,12 +10,6 @@ import Button from '@mui/material/Button';
 import { createSuperheroe } from '../../../API/superheroes/superheroes.thunks';
 import { useState } from 'react';
 
-const style={                
-  display: 'flex', 
-  flexDirection: 'column',
-  gap: '10px',
-}
-
 const ModalContent = ({ handleClose }) => {
   const dispatch = useDispatch();
   UseStylesModalContent();
@@ -35,19 +29,15 @@ const ModalContent = ({ handleClose }) => {
     e.preventDefault();
 
     const createSuperheroeData = new FormData();
-    
     createSuperheroeData.append("nickname", nickname);
     createSuperheroeData.append("real_name", real_name);
     createSuperheroeData.append("origin_description", origin_description);
     createSuperheroeData.append("superpowers", superpowers);
     createSuperheroeData.append("catch_phrase", catch_phrase);
     createSuperheroeData.append("images", images);
-    for (let key of createSuperheroeData.entries()) {
-      console.log(key[0] + ', ' + key[1]);
-    }
-    
-    console.log(images);    
-    console.log(createSuperheroeData);
+    // for (let key of createSuperheroeData.entries()) {
+    //   console.log(key[0] + ', ' + key[1]);
+    // }
     
     dispatch(createSuperheroe(createSuperheroeData));
 
@@ -62,7 +52,7 @@ const ModalContent = ({ handleClose }) => {
 
   return (
     <form 
-      style={style}
+      className="form-wrapper"
       onSubmit={handleSubmit}  
       encType="multipart/form-data"
     >
@@ -129,11 +119,10 @@ const ModalContent = ({ handleClose }) => {
       <div className="form-group">
         <label>Upload images</label>
         <input 
-          // value={images}
           onChange={handleUploadImage}
           name="images"
           type="file" 
-          className="form-control" 
+          className="form-control image-form" 
           id="images" 
           placeholder="Upload images" 
         />
