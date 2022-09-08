@@ -10,8 +10,9 @@ const UseStylesModalContent = makeStyles({
         '.form-group': {
             display: 'flex',
             flexDirection: 'column',
-            // alignItems: 'center',
-            // gap: '20px'
+        },
+        '.textarea': {
+            resize: 'none',
         },
         '.form-control': {
             width: '100%',

@@ -85,8 +85,9 @@ const ModalContent = ({ handleClose }) => {
         <textarea 
           value={origin_description}
           onChange={(e) => {setOrigin_description(e.target.value)}}
-          type="article" 
-          className="form-control" 
+          type="article"
+          rows="5" 
+          className="form-control textarea" 
           id="origin_description" 
           placeholder="Origin description" 
         />
@@ -98,7 +99,8 @@ const ModalContent = ({ handleClose }) => {
           value={superpowers}
           onChange={(e) => {setSuperpowers(e.target.value)}}
           type="article" 
-          className="form-control" 
+          rows="5"
+          className="form-control textarea" 
           id="superpowers" 
           placeholder="Superpowers" 
         />
@@ -110,7 +112,8 @@ const ModalContent = ({ handleClose }) => {
           value={catch_phrase}
           onChange={(e) => {setCatch_phrase(e.target.value)}}
           type="article" 
-          className="form-control" 
+          rows="3"
+          className="form-control textarea" 
           id="catch_phrase" 
           placeholder="Catch phrase" 
         />
