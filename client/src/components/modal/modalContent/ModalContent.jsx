@@ -5,6 +5,8 @@ import PropTypes from 'prop-types';
 
 import * as yup from 'yup';
 
+import InputLabel from '@mui/material/InputLabel';
+import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 
 import { createSuperheroe } from '../../../API/superheroes/superheroes.thunks';
@@ -57,9 +59,10 @@ const ModalContent = ({ handleClose }) => {
       encType="multipart/form-data"
     >
       <div className="form-group">
-        <label>Nickname</label>
-        <input 
+        {/* <label>Nickname</label> */}
+        <Input 
           value={nickname}
+          variant="outlined"
           onChange={(e) => {setNickname(e.target.value)}}
           type="text" 
           className="form-control" 
@@ -69,8 +72,8 @@ const ModalContent = ({ handleClose }) => {
       </div>
 
       <div className="form-group">
-        <label>Real name</label>
-        <input 
+        {/* <label>Real name</label> */}
+        <Input 
           value={real_name}
           onChange={(e) => {setReal_name(e.target.value)}}
           type="text" 
@@ -81,12 +84,13 @@ const ModalContent = ({ handleClose }) => {
       </div>
 
       <div className="form-group">
-        <label>Origin description</label>
-        <textarea 
+        {/* <label>Origin description</label> */}
+        <Input 
           value={origin_description}
           onChange={(e) => {setOrigin_description(e.target.value)}}
           type="article"
-          rows="5" 
+          minRows={3}
+          multiline={true}
           className="form-control textarea" 
           id="origin_description" 
           placeholder="Origin description" 
@@ -94,12 +98,13 @@ const ModalContent = ({ handleClose }) => {
       </div>
 
       <div className="form-group">
-        <label>Superpowers</label>
-        <textarea 
+        {/* <label>Superpowers</label> */}
+        <Input 
           value={superpowers}
           onChange={(e) => {setSuperpowers(e.target.value)}}
           type="article" 
-          rows="5"
+          minRows={3}
+          multiline={true}
           className="form-control textarea" 
           id="superpowers" 
           placeholder="Superpowers" 
@@ -107,12 +112,13 @@ const ModalContent = ({ handleClose }) => {
       </div>
 
       <div className="form-group">
-        <label>Catch phrase</label>
-        <textarea 
+        {/* <label>Catch phrase</label> */}
+        <Input 
           value={catch_phrase}
           onChange={(e) => {setCatch_phrase(e.target.value)}}
           type="article" 
-          rows="3"
+          minRows={3}
+          multiline={true}
           className="form-control textarea" 
           id="catch_phrase" 
           placeholder="Catch phrase" 
@@ -120,8 +126,8 @@ const ModalContent = ({ handleClose }) => {
       </div>
 
       <div className="form-group">
-        <label>Upload images</label>
-        <input 
+        <InputLabel>Upload images</InputLabel>
+        <Input 
           onChange={handleUploadImage}
           name="images"
           type="file" 

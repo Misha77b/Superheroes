@@ -11,14 +11,9 @@ const UseStylesModalContent = makeStyles({
             display: 'flex',
             flexDirection: 'column',
         },
-        '.textarea': {
-            resize: 'none',
-        },
         '.form-control': {
             width: '100%',
             padding: '10px 15px',
-            borderRadius: '15px',
-            boxSizing: 'border-box',
         },
         '.image-form': {
             margin: 'auto'
