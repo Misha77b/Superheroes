@@ -7,6 +7,7 @@ import {
 import { getSuperheroes } from '../../API/superheroes/superheroes.thunks';
 import SuperheroList from '../superheroList/SuperheroList';
 import SuperheroPage from '..//superheroPage/SuperheroPage';
+import EditSuperhero from '../editSuperhero/EditSuperhero';
 
 const Main = () => {
   const dispatch = useDispatch(); 
@@ -21,6 +22,10 @@ const Main = () => {
     {
       path: "/view/:pageId",
       main: () => <SuperheroPage superheroes={superheroes} />,
+    },
+    {
+      path: "/edit/:pageId",
+      main: () => <EditSuperhero superheroes={superheroes} />,
     }
   ]; 
 

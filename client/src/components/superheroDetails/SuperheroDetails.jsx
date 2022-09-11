@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 import { getSuperheroe } from '../../API/superheroes/superheroes.thunks'
 import useStylesSuperheroDetails from "./useStylesSuperheroDetails";
 
+import Button from '@mui/material/Button';
+import { Link } from "react-router-dom";
+
 const SuperheroDetails = () => {
   useStylesSuperheroDetails();
 
@@ -32,6 +35,16 @@ const SuperheroDetails = () => {
         <p>{superheroe.superpowers}</p>
         <p>{superheroe.catch_phrase}</p>
       </div>
+      <Button
+        className='view-btn'
+        component={Link}
+        id={superheroe._id}
+        to={`/edit/${superheroe._id}`}
+        color='secondary' 
+        variant='contained'
+      >
+        Edit Superhero
+      </Button>
     </div>
   )
 }

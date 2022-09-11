@@ -37,9 +37,6 @@ const ModalContent = ({ handleClose }) => {
     createSuperheroeData.append("superpowers", superpowers);
     createSuperheroeData.append("catch_phrase", catch_phrase);
     createSuperheroeData.append("images", images);
-    // for (let key of createSuperheroeData.entries()) {
-    //   console.log(key[0] + ', ' + key[1]);
-    // }
     
     dispatch(createSuperheroe(createSuperheroeData));
 
