@@ -29,22 +29,33 @@ const SuperheroDetails = () => {
         <img className='superhero-image' src={`/assets/${superheroe.images}`} alt={superheroe.nickname} />
       </div>
       <div className='info-container'>
-        <span>{superheroe.nickname}</span> <br />
-        <span>{superheroe.real_name}</span>
-        <p>{superheroe.origin_description}</p>
-        <p>{superheroe.superpowers}</p>
-        <p>{superheroe.catch_phrase}</p>
+        <h2 className='superheroe-nickname'>{superheroe.nickname}</h2> <br />
+        <span className='superheroe-realName'>{superheroe.real_name}</span>
+        <p className='superheroe-originalDescription'>{superheroe.origin_description}</p>
+        <p className='superheroe-superpowers'>{superheroe.superpowers}</p>
+        <p className='superheroe-catchPhrase'>{superheroe.catch_phrase}</p>
+        <Button
+          className='edit-btn'
+          component={Link}
+          id={superheroe._id}
+          to={`/edit/${superheroe._id}`}
+          sx={{
+            fontFamily: 'Lato, sans-serif',
+            fontSize: '14px',
+            fontWeight: '400',
+            color: 'black',
+            background: 'transparent',
+            border :'2px solid #2E2E2E',
+            borderRadius: '10px',
+            '&:hover': {
+              background: 'transparent'
+            }
+          }}
+          variant='contained'
+        >
+          Edit Superhero
+        </Button>
       </div>
-      <Button
-        className='view-btn'
-        component={Link}
-        id={superheroe._id}
-        to={`/edit/${superheroe._id}`}
-        color='secondary' 
-        variant='contained'
-      >
-        Edit Superhero
-      </Button>
     </div>
   )
 }

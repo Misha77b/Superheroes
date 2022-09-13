@@ -56,14 +56,11 @@ export const getSuperheroe = (id) => {
     }
 };
 
-export const updateSuperheroe = (superheroe) => {
+export const updateSuperheroe = (editSuperheroeData) => {
     return (dispatch) => {
         fetch(`http://localhost:5000/superheroes/view/${id}`, {
             method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(superheroe),
+            body: superheroe,
         }).then(res => res.json())
         .then(superheroe => {dispatch(updateSuperheroeSuccess(superheroe))})
         .catch(err => {
