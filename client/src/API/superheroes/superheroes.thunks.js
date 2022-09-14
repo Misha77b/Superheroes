@@ -56,11 +56,11 @@ export const getSuperheroe = (id) => {
     }
 };
 
-export const updateSuperheroe = (editSuperheroeData) => {
+export const updateSuperheroe = (id, editSuperheroeData) => {
     return (dispatch) => {
-        fetch(`http://localhost:5000/superheroes/view/${id}`, {
+        fetch(`http://localhost:5000/superheroes/edit/${id}`, {
             method: "PUT",
-            body: superheroe,
+            body: editSuperheroeData,
         }).then(res => res.json())
         .then(superheroe => {dispatch(updateSuperheroeSuccess(superheroe))})
         .catch(err => {
