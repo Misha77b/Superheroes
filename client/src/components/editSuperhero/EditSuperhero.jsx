@@ -29,6 +29,7 @@ const EditSuperhero = () => {
     const [images, setImages] = useState(superheroe.images);
 
     const handleEditImage = (e) => {
+        e.preventDefault();
         setImages(e.target.files[0]);
     }
 
@@ -125,6 +126,7 @@ const EditSuperhero = () => {
             <div className="form-group">
                 <InputLabel>Upload images</InputLabel>
                 <Input 
+                    // value={images}
                     onChange={handleEditImage}
                     name="images"
                     type="file" 
@@ -132,6 +134,16 @@ const EditSuperhero = () => {
                     id="images" 
                     placeholder="Upload images" 
                 />
+                {/* <img src={`/assets/${superheroe.images}`} alt="hero img"width={"100px"} />
+                <Input 
+                    value={images}
+                    // onChange={handleEditImage}
+                    name="images"
+                    type="hidden" 
+                    className="form-control image-form" 
+                    id="images" 
+                    placeholder="Upload images" 
+                /> */}
             </div>
 
             <div sx={{gap: "20px"}}>
