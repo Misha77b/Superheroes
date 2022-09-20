@@ -16,11 +16,7 @@ const EditSuperhero = () => {
     const { pageId } = useParams();
 
     const superheroe = useSelector((state) => state.superheroesReducer.superheroe); 
-
-    useEffect(() => {
-        dispatch(getSuperheroe(pageId));
-    }, [pageId]); 
-
+    
     const [nickname, setNickname] = useState(superheroe.nickname);
     const [real_name, setReal_name] = useState(superheroe.real_name);
     const [origin_description, setOrigin_description] = useState(superheroe.origin_description);
@@ -28,13 +24,18 @@ const EditSuperhero = () => {
     const [catch_phrase, setCatch_phrase] = useState(superheroe.catch_phrase);
     const [images, setImages] = useState(superheroe.images);
 
+    useEffect(() => {
+        dispatch(getSuperheroe(pageId));
+        // setImages(superheroe.images);
+    }, [pageId]); 
+
     const handleEditImage = (e) => {
         e.preventDefault();
         setImages(e.target.files[0]);
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
         const editSuperheroeData = new FormData();
         editSuperheroeData.append("nickname", nickname);
