@@ -13,12 +13,11 @@ const SuperheroList = ({superheroes}) => {
 
   return (
     <>
-      {loading ?
-      <div className='superheroList'>
-        <SuperheroCard 
-          superheroes={superheroes}
-        />
-      </div> : <Loader />
+      {loading ? <div className='superheroList'>
+          <SuperheroCard 
+            superheroes={superheroes}
+          />
+        </div> : <Loader />
       }
     </>
   )

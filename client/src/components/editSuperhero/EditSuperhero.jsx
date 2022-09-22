@@ -1,21 +1,16 @@
-import React, {useState, useEffect} from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams, Link } from "react-router-dom";
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 import useStylesEditSuperhero from './useStylesEditSuperhero';
 
-import { getSuperheroe, updateSuperheroe } from '../../API/superheroes/superheroes.thunks';
+import { updateSuperheroe } from '../../API/superheroes/superheroes.thunks';
 
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import Input from '@mui/material/Input';
 
-const EditSuperhero = () => {
+const EditSuperhero = ({ superheroe, pageId }) => {
     useStylesEditSuperhero();
-    const dispatch = useDispatch();
-    
-    const { pageId } = useParams();
-
-    const superheroe = useSelector((state) => state.superheroesReducer.superheroe); 
     
     const [nickname, setNickname] = useState(superheroe.nickname);
     const [real_name, setReal_name] = useState(superheroe.real_name);
@@ -24,18 +19,13 @@ const EditSuperhero = () => {
     const [catch_phrase, setCatch_phrase] = useState(superheroe.catch_phrase);
     const [images, setImages] = useState(superheroe.images);
 
-    useEffect(() => {
-        dispatch(getSuperheroe(pageId));
-        // setImages(superheroe.images);
-    }, [pageId]); 
-
     const handleEditImage = (e) => {
         e.preventDefault();
         setImages(e.target.files[0]);
     }
 
     const handleSubmit = (e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
         const editSuperheroeData = new FormData();
         editSuperheroeData.append("nickname", nickname);
@@ -57,7 +47,7 @@ const EditSuperhero = () => {
     }
 
   return (
-    <div className='edit-container'>
+     <div className='edit-container'>
         <h1>Edit Superhero</h1>
         
         <form 
@@ -169,7 +159,13 @@ const EditSuperhero = () => {
             </div>
         </form>
     </div>
+    
   )
 }
 
 export default EditSuperhero
+
+EditSuperhero.propTypes = {
+    superheroe: PropTypes.object,
+    pageId: PropTypes.string
+}

@@ -1,27 +1,13 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from "react-router-dom";
-
-import { getSuperheroe } from '../../API/superheroes/superheroes.thunks'
-import useStylesSuperheroDetails from "./useStylesSuperheroDetails";
+import React from "react";
+import PropTypes from 'prop-types';
 
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 
-const SuperheroDetails = () => {
+import useStylesSuperheroDetails from "./useStylesSuperheroDetails";
+
+const SuperheroDetails = ({superheroe}) => {
   useStylesSuperheroDetails();
-
-  const dispatch = useDispatch();
-  
-  const { pageId } = useParams();
-  console.log(pageId);
-  
-  const superheroe = useSelector((state) => state.superheroesReducer.superheroe); 
-  console.log(superheroe);
-
-  useEffect(() => {
-    dispatch(getSuperheroe(pageId))
-  }, [pageId]); 
 
   return (
     <div className="superheroDetails">
@@ -61,3 +47,7 @@ const SuperheroDetails = () => {
 }
 
 export default SuperheroDetails
+
+SuperheroDetails.propTypes = {
+  superheroe: PropTypes.object,
+}
