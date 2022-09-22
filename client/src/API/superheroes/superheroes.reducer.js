@@ -9,6 +9,7 @@ import {
 
 const initState = {
     createSuperheroeRequest: {},
+    loading: false,
     superheroeId: null,
     updateSuperheroeRequest: null,
     superheroes: [],
@@ -23,13 +24,15 @@ const superheroesReducer = (state = initState, action) => {
             return {
                 ...state,
                 superheroes: action.payload,
+                loading: true,
             }
         }
 
         case GET_SUPERHEROE_REQUEST: {
             return {
                 ...state,
-                superheroe: action.payload
+                superheroe: action.payload,
+                loading: true,
             }
         }
 
@@ -37,14 +40,16 @@ const superheroesReducer = (state = initState, action) => {
             return {
                 ...state,
                 createSuperheroeRequest: action.payload,
-                superheroes: [...state.superheroes, action.payload]
+                superheroes: [...state.superheroes, action.payload],
+                loading: true,
             }
         }
 
         case UPDATE_SUPERHEROE_REQUEST: {
             return{
                 ...state,
-                superheroeId: action.payload
+                superheroeId: action.payload,
+                // loading: true,
             }
         }
 
@@ -52,7 +57,8 @@ const superheroesReducer = (state = initState, action) => {
             return {
                 ...state, 
                 superheroes: state.superheroes.map((superheroe) => {superheroe._id === action.payload ? updatedVisit : superheroe}),
-                superheroeId: null
+                superheroeId: null,
+                loading: true,
             }
         }
 
@@ -60,7 +66,8 @@ const superheroesReducer = (state = initState, action) => {
             return {
                 ...state,
                 deleteSuperheroeRequest: action.payload,
-                superheroes: state.superheroes.filter((superheroe) => superheroe._id !== action.payload)
+                superheroes: state.superheroes.filter((superheroe) => superheroe._id !== action.payload),
+                loading: true,
             }
         }
 
