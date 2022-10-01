@@ -6,9 +6,10 @@ const Loader = () => {
     useStylesLoader();
 
   return (
-    <div className='loader'>
+    <div className='loader-wrapper'>
         {/* temporery loader decision */}
-        <CircularProgress disableShrink />
+        {/* <CircularProgress disableShrink /> */}
+        <div className="loader"></div>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from "react-router-dom";
 import PropTypes from 'prop-types';
 import useStylesEditSuperhero from './useStylesEditSuperhero';
@@ -11,6 +12,8 @@ import Input from '@mui/material/Input';
 
 const EditSuperhero = ({ superheroe, pageId }) => {
     useStylesEditSuperhero();
+
+    const dispatch = useDispatch();
     
     const [nickname, setNickname] = useState(superheroe.nickname);
     const [real_name, setReal_name] = useState(superheroe.real_name);
@@ -20,7 +23,6 @@ const EditSuperhero = ({ superheroe, pageId }) => {
     const [images, setImages] = useState(superheroe.images);
 
     const handleEditImage = (e) => {
-        e.preventDefault();
         setImages(e.target.files[0]);
     }
 
@@ -125,8 +127,9 @@ const EditSuperhero = ({ superheroe, pageId }) => {
                     id="images" 
                     placeholder="Upload images" 
                 />
-                {/* <img src={`/assets/${superheroe.images}`} alt="hero img"width={"100px"} />
-                <Input 
+                
+                <img name="images" src={`/assets/${superheroe.images}`} alt="hero img"width={"100px"} />
+                {/* <Input 
                     value={images}
                     // onChange={handleEditImage}
                     name="images"

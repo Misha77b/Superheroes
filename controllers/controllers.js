@@ -1,8 +1,12 @@
 const Superhero = require('../models/superheroSchema');
 
 exports.GetSuperheroes = async (req, res) => {
-    const superheroes = await Superhero.find({});
-    res.send(superheroes);
+    try{
+        const superheroes = await Superhero.find({});
+        res.send(superheroes);
+    } catch (e) {
+        res.status(500).json(e);
+    }
 };
 
 exports.PostSuperhero = async (req, res) => {
@@ -41,14 +45,26 @@ exports.GetSuperheroById = async (req, res) => {
 exports.UpdateSuperhero = async (req, res) => {
     try{
         const id = req.params.id;
-        const updatedSuperhero = await Superhero.findByIdAndUpdate(id, { 
-            nickname: req.body.nickname, 
-            real_name: req.body.real_name, 
-            origin_description: req.body.origin_description, 
-            superpowers: req.body.superpowers, 
-            catch_phrase: req.body.catch_phrase, 
-            images: req.file.filename
-        }, {new: true})
+        let superheroData = {}
+        if(req.file) {
+            superheroData = { 
+                nickname: req.body.nickname, 
+                real_name: req.body.real_name, 
+                origin_description: req.body.origin_description, 
+                superpowers: req.body.superpowers, 
+                catch_phrase: req.body.catch_phrase, 
+                images: req.file.filename
+            }
+        }else {
+            superheroData = { 
+                nickname: req.body.nickname, 
+                real_name: req.body.real_name, 
+                origin_description: req.body.origin_description, 
+                superpowers: req.body.superpowers, 
+                catch_phrase: req.body.catch_phrase, 
+            }
+        }
+        const updatedSuperhero = await Superhero.findByIdAndUpdate(id, superheroData, {new: true})
         if(!id){
             res.status(400).json({message: 'Id is not defined'});
         }

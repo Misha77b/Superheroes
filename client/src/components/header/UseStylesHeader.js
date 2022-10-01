@@ -9,6 +9,10 @@ const UseStylesHeader = makeStyles({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between', 
+            // position: 'sticky',
+            // top: '0',
+            // zIndex: '10',
+            // boxShadow: 'rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px'
         },
         '.header-logo-title' : {
             margin: '10px 15px',                   

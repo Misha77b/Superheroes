@@ -1,7 +1,6 @@
 const Router = require("express");
 const multer = require("multer");
 const uploads = require("../models/imageStorage");
-const path = require ('path');
 
 const {
     GetSuperheroes, 
