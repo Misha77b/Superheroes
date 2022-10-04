@@ -24,15 +24,15 @@ const SuperheroCard = ({superheroes}) => {
   return (
     <>
       {superheroes.map((superheroe) => {
-        return <Card sx={{width: 345, margin: '20px',}} className='superhero-card' key={superheroe._id}>
+        return <Card sx={{width: 345, margin: '20px', background: '#272933'}} className='superhero-card' key={superheroe._id}>
           <CardActionArea>
             <CardMedia
             sx={{height: 250, objectFit: 'cover',}}
               image={`/assets/${superheroe.images}`}
               title={superheroe.nickname}
             />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2" sx={{textAlign: "center"}}>
+            <CardContent sx={{paddingBottom: '0'}}>
+              <Typography gutterBottom variant="h5" component="h5" sx={{textAlign: "center", color: '#CCCCCC', paddingBottom: '0'}}>
                 {superheroe.nickname}
               </Typography>
             </CardContent>
@@ -45,7 +45,7 @@ const SuperheroCard = ({superheroes}) => {
               component={Link}
               id={superheroe._id}
               to={`/view/${superheroe._id}`}
-              color='secondary' 
+              sx={{backgroundColor: '#101415', color: '#CCCCCC'}}
               variant='contained'
             >
               View
@@ -54,7 +54,7 @@ const SuperheroCard = ({superheroes}) => {
               className='delete_btn'
               onClick={handleDelete}
               id={superheroe._id}
-              color='error' 
+              sx={{backgroundColor: '#101415', color: '#CCCCCC'}}
               variant='contained'
             >
               Delete

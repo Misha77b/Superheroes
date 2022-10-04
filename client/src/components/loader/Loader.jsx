@@ -7,9 +7,7 @@ const Loader = () => {
 
   return (
     <div className='loader-wrapper'>
-        {/* temporery loader decision */}
-        {/* <CircularProgress disableShrink /> */}
-        <div className="loader"></div>
+      <div className="loader"></div>
     </div>
   )
 }

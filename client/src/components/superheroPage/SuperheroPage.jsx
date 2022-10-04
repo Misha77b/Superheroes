@@ -13,11 +13,11 @@ const SuperheroPage = () => {
   const { pageId } = useParams();
   
   const superheroe = useSelector((state) => state.superheroesReducer.superheroe); 
+  const loading = useSelector((state) => state.superheroesReducer.loading); 
 
   useEffect(() => {
     dispatch(getSuperheroe(pageId))
   }, [pageId]); 
-  const loading = useSelector((state) => state.superheroesReducer.loading); 
   
   return (
     <>

@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import CreateSuperheroModal from '../modal/CreateSuperheroModal';
 import HomeIcon from './HomeIcon';
+import FavIcon from './FavIcon';
 
 const Header = () => {
   UseStylesHeader();
@@ -21,25 +22,37 @@ const Header = () => {
   return (
     <>
       <div className='header'>
-        <Button
-          className='home-btn'
-          component={Link}
-          to={`/`} 
-          sx={{
-            margin: '10px 50px'
-          }}
-        >
-          <HomeIcon />
-        </Button>
+        <div className='header-nav-icons'>
+          <Button
+            className='home-btn'
+            component={Link}
+            to={`/`} 
+            // sx={{
+            //   margin: '10px 50px'
+            // }}
+          >
+            <HomeIcon />
+          </Button>
+          <Button
+            className='fav-btn'
+            // component={Link}
+            // to={`/favourites`} 
+            // sx={{
+            //   margin: '10px 50px'
+            // }}
+          >
+            <FavIcon />
+          </Button>
+        </div>
         <h2 className="header-logo-title">Superheroes</h2>
         <Button
             onClick={handleOpen}
             className='header-btn'
             sx={{
               margin: '10px 50px',
-              border: '2px solid #2D2D2D',
+              border: '2px solid #CCCCCC',
               background: 'transparent',
-              color: '#2D2D2D',
+              color: '#CCCCCC',
               borderRadius: '5px',
             }}
         > 
