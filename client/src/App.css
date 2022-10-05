@@ -2,7 +2,7 @@
   display: flex;
   /* text-align: center; */
   flex-direction: column;
-  background: #101415;
+  background: #1f2729;
 }
 
 @keyframes spin {

@@ -19,7 +19,7 @@ const UseStylesHeader = makeStyles({
             fontFamily: 'Roboto sans-serif',
             fontSize: '30px',
             fontWeight: '700',
-            color: '#CCCCCC',
+            color: '#A99E84',
             cursor: 'pointer',
         },
     }

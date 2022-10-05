@@ -11,7 +11,7 @@ const useStylesSuperheroDetails = makeStyles({
         '.img-container': {
             display: 'flex',
             justifyContent: 'center',
-            border: '2px solid #9c9c9c',
+            border: '2px solid #F2F1F4',
             borderRadius: '20px'
         },
         '.superhero-image': {
@@ -30,22 +30,27 @@ const useStylesSuperheroDetails = makeStyles({
             margin: '0',
             fontSize: '30px',
             fontWeight: '700',
+            color: '#F2F1F4'
         },
         '.superheroe-realName': {
             fontSize: '26px',
             fontWeight: '400',
+            color: '#F2F1F4'
         },
         '.superheroe-originalDescription': {
             fontSize: '20px',
             fontWeight: '400',
+            color: '#F2F1F4'
         },
         '.superheroe-superpowers': {
             fontSize: '20px',
             fontWeight: '400',
+            color: '#F2F1F4'
         },
         '.superheroe-catchPhrase': {
             fontSize: '20px',
             fontWeight: '400',
+            color: '#F2F1F4'
         },
         '.edit-btn': {
             width: '300px'

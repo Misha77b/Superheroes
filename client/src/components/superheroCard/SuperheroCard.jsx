@@ -27,7 +27,7 @@ const SuperheroCard = ({superheroes}) => {
         return <Card sx={{width: 345, margin: '20px', background: '#272933'}} className='superhero-card' key={superheroe._id}>
           <CardActionArea>
             <CardMedia
-            sx={{height: 250, objectFit: 'cover',}}
+              sx={{height: 250, objectFit: 'cover',}}
               image={`/assets/${superheroe.images}`}
               title={superheroe.nickname}
             />

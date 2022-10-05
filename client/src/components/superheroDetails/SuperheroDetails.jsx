@@ -29,9 +29,9 @@ const SuperheroDetails = ({superheroe}) => {
             fontFamily: 'Lato, sans-serif',
             fontSize: '14px',
             fontWeight: '400',
-            color: 'black',
+            color: '#F2F1F4',
             background: 'transparent',
-            border :'2px solid #2E2E2E',
+            border :'2px solid #F2F1F4',
             borderRadius: '10px',
             '&:hover': {
               background: 'transparent'

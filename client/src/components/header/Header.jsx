@@ -50,9 +50,9 @@ const Header = () => {
             className='header-btn'
             sx={{
               margin: '10px 50px',
-              border: '2px solid #CCCCCC',
+              border: '2px solid #A99E84',
               background: 'transparent',
-              color: '#CCCCCC',
+              color: '#A99E84',
               borderRadius: '5px',
             }}
         > 
