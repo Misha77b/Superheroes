@@ -4,7 +4,10 @@ import {
   Route,
   Routes
 } from "react-router-dom";
+
 import { getSuperheroes } from '../../API/superheroes/superheroes.thunks';
+
+import Favorites from '../favorites/Favorites'
 import SuperheroList from '../superheroList/SuperheroList';
 import SuperheroPage from '..//superheroPage/SuperheroPage';
 import EditSuperheroPage from '../editSuperheroPage/EditSuperheroPage';
@@ -18,6 +21,10 @@ const Main = () => {
     {
       path: "/",
       main: () => <SuperheroList superheroes={superheroes} />,
+    },
+    {
+      path: "/favorites",
+      main: () => <Favorites />,
     },
     {
       path: "/view/:pageId",

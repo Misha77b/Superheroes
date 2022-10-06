@@ -35,8 +35,8 @@ const Header = () => {
           </Button>
           <Button
             className='fav-btn'
-            // component={Link}
-            // to={`/favourites`} 
+            component={Link}
+            to={`/favorites`} 
             // sx={{
             //   margin: '10px 50px'
             // }}

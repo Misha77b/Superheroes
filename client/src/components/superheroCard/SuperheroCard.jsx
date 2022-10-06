@@ -45,7 +45,10 @@ const SuperheroCard = ({superheroes}) => {
               component={Link}
               id={superheroe._id}
               to={`/view/${superheroe._id}`}
-              sx={{backgroundColor: '#101415', color: '#CCCCCC'}}
+              sx={{
+                backgroundColor: '#101415', 
+                color: '#CCCCCC'
+              }}
               variant='contained'
             >
               View
@@ -54,7 +57,12 @@ const SuperheroCard = ({superheroes}) => {
               className='delete_btn'
               onClick={handleDelete}
               id={superheroe._id}
-              sx={{backgroundColor: '#101415', color: '#CCCCCC'}}
+              sx={{
+                backgroundColor: '#101415', 
+                color: '#CCCCCC', 
+                '&:hover':{
+                  background: '#FF2400'}
+              }}
               variant='contained'
             >
               Delete
