@@ -1,4 +1,5 @@
 const Superhero = require('../models/superheroSchema');
+const fs = require('fs');
 
 exports.GetSuperheroes = async (req, res) => {
     try{
@@ -45,26 +46,42 @@ exports.GetSuperheroById = async (req, res) => {
 exports.UpdateSuperhero = async (req, res) => {
     try{
         const id = req.params.id;
-        let superheroData = {}
+        let new_img = "";
+        // let superheroData = {}
         if(req.file) {
-            superheroData = { 
-                nickname: req.body.nickname, 
-                real_name: req.body.real_name, 
-                origin_description: req.body.origin_description, 
-                superpowers: req.body.superpowers, 
-                catch_phrase: req.body.catch_phrase, 
-                images: req.file.filename
+            new_img = req.file.filename;
+            console.log(req.body);
+            try {
+                fs.unlinkSync(`./client/public/assets/${req.body.images}`);
+            } catch(err) {
+                console.log(err);
             }
+            // superheroData = { 
+            //     nickname: req.body.nickname, 
+            //     real_name: req.body.real_name, 
+            //     origin_description: req.body.origin_description, 
+            //     superpowers: req.body.superpowers, 
+            //     catch_phrase: req.body.catch_phrase, 
+            //     images: new_img
+            // }
         }else {
-            superheroData = { 
-                nickname: req.body.nickname, 
-                real_name: req.body.real_name, 
-                origin_description: req.body.origin_description, 
-                superpowers: req.body.superpowers, 
-                catch_phrase: req.body.catch_phrase, 
-            }
+            new_img = req.body.images
+            // superheroData = { 
+            //     nickname: req.body.nickname, 
+            //     real_name: req.body.real_name, 
+            //     origin_description: req.body.origin_description, 
+            //     superpowers: req.body.superpowers, 
+            //     catch_phrase: req.body.catch_phrase, 
+            // }
         }
-        const updatedSuperhero = await Superhero.findByIdAndUpdate(id, superheroData, {new: true})
+        const updatedSuperhero = await Superhero.findByIdAndUpdate(id, { 
+            nickname: req.body.nickname, 
+            real_name: req.body.real_name, 
+            origin_description: req.body.origin_description, 
+            superpowers: req.body.superpowers, 
+            catch_phrase: req.body.catch_phrase, 
+            images: new_img
+        }, {new: true})
         if(!id){
             res.status(400).json({message: 'Id is not defined'});
         }
@@ -80,7 +97,15 @@ exports.DeleteSuperhero = async (req, res) => {
         if(!id){
             res.status(400).json({message: 'Id is not defined'});
         }
-        const superhero = await Superhero.findByIdAndDelete(id);
+        const superhero = await Superhero.findByIdAndDelete(id, (err, res) => {
+            if(res.images != '') {
+                try{
+                    fs.unlinkSync(`./client/public/assets/${req.file.filename}`);
+                } catch(err){
+                    console.log(err);
+                }
+            }
+        });
         return res.json(superhero)
     } catch(e) {
         res.status(500).json(e);
