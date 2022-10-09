@@ -21,8 +21,10 @@ const EditSuperhero = ({ superheroe, pageId }) => {
     const [superpowers, setSuperpowers] = useState(superheroe.superpowers);
     const [catch_phrase, setCatch_phrase] = useState(superheroe.catch_phrase);
     const [images, setImages] = useState(superheroe.images);
+    const [old_image, setOld_Image] = useState(superheroe.images);
 
     const handleEditImage = (e) => {
+        // e.preventDefault();
         setImages(e.target.files[0]);
     }
 
@@ -36,6 +38,7 @@ const EditSuperhero = ({ superheroe, pageId }) => {
         editSuperheroeData.append("superpowers", superpowers);
         editSuperheroeData.append("catch_phrase", catch_phrase);
         editSuperheroeData.append("images", images);
+        editSuperheroeData.append("images", old_image);
 
 
         dispatch(updateSuperheroe(pageId, editSuperheroeData));
@@ -46,6 +49,7 @@ const EditSuperhero = ({ superheroe, pageId }) => {
         setSuperpowers("");
         setCatch_phrase("");
         setImages("");
+        setOld_Image("");
     }
 
   return (
@@ -129,15 +133,7 @@ const EditSuperhero = ({ superheroe, pageId }) => {
                 />
                 
                 <img name="images" src={`/assets/${superheroe.images}`} alt="hero img"width={"100px"} />
-                {/* <Input 
-                    value={images}
-                    // onChange={handleEditImage}
-                    name="images"
-                    type="hidden" 
-                    className="form-control image-form" 
-                    id="images" 
-                    placeholder="Upload images" 
-                /> */}
+                <Input value={old_image} name="old_image" type="hidden" />
             </div>
 
             <div sx={{gap: "20px"}}>
