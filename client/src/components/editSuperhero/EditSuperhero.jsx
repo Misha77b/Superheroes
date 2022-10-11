@@ -40,7 +40,6 @@ const EditSuperhero = ({ superheroe, pageId }) => {
         editSuperheroeData.append("images", images);
         editSuperheroeData.append("images", old_image);
 
-
         dispatch(updateSuperheroe(pageId, editSuperheroeData));
 
         setNickname("");
@@ -54,7 +53,7 @@ const EditSuperhero = ({ superheroe, pageId }) => {
 
   return (
      <div className='edit-container'>
-        <h1>Edit Superhero</h1>
+        <h1 className='edit-header'>Edit Superhero</h1>
         
         <form 
             className="form-wrapper"
@@ -123,7 +122,6 @@ const EditSuperhero = ({ superheroe, pageId }) => {
             <div className="form-group">
                 <InputLabel>Upload images</InputLabel>
                 <Input 
-                    // value={images}
                     onChange={handleEditImage}
                     name="images"
                     type="file" 

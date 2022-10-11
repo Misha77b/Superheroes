@@ -49,13 +49,9 @@ exports.UpdateSuperhero = async (req, res) => {
         let new_img = "";
         if(req.file) {
             new_img = req.file.filename;
-            try {
                 fs.unlinkSync(`./client/public/assets/${req.body.images}`);
-            } catch(err) {
-                console.log(err);
-            }
         }else {
-            new_img = req.body.images
+            new_img = req.body.images[0]
         }
         const updatedSuperhero = await Superhero.findByIdAndUpdate(id, { 
             nickname: req.body.nickname, 
