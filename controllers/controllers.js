@@ -79,7 +79,7 @@ exports.DeleteSuperhero = async (req, res) => {
         const superhero = await Superhero.findByIdAndDelete(id, (err, res) => {
             if(res.images != '') {
                 try{
-                    fs.unlinkSync(`./client/public/assets/${req.file.filename}`);
+                    fs.unlinkSync(`./client/public/assets/${res.images}`);
                 } catch(err){
                     console.log(err);
                 }

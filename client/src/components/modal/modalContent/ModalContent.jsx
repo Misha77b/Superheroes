@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import UseStylesModalContent from './UseStylesModalContent';
 import PropTypes from 'prop-types';
 
@@ -9,8 +9,8 @@ import InputLabel from '@mui/material/InputLabel';
 import Input from '@mui/material/Input';
 import Button from '@mui/material/Button';
 
+import fileUploadReader from '../../../helpers/fileUploadReader';
 import { createSuperheroe } from '../../../API/superheroes/superheroes.thunks';
-import { useState } from 'react';
 
 const ModalContent = ({ handleClose }) => {
   const dispatch = useDispatch();
@@ -25,6 +25,7 @@ const ModalContent = ({ handleClose }) => {
 
   const handleUploadImage = (e) => {
     setImages(e.target.files[0]);
+    fileUploadReader(e);
   }
 
   const handleSubmit = (e) => {
@@ -132,6 +133,7 @@ const ModalContent = ({ handleClose }) => {
           id="images" 
           placeholder="Upload images" 
         />
+        <img src={''} id={'myimage'} />
       </div>
 
       <Button sx={{
