@@ -11,6 +11,7 @@ import Button from '@mui/material/Button';
 
 import fileUploadReader from '../../../helpers/fileUploadReader';
 import { createSuperheroe } from '../../../API/superheroes/superheroes.thunks';
+import { createBtnStyle } from '../btnsStyle/createBtnStyle';
 
 const ModalContent = ({ handleClose }) => {
   const dispatch = useDispatch();
@@ -57,7 +58,6 @@ const ModalContent = ({ handleClose }) => {
       encType="multipart/form-data"
     >
       <div className="form-group">
-        {/* <label>Nickname</label> */}
         <Input 
           value={nickname}
           variant="outlined"
@@ -70,7 +70,6 @@ const ModalContent = ({ handleClose }) => {
       </div>
 
       <div className="form-group">
-        {/* <label>Real name</label> */}
         <Input 
           value={real_name}
           onChange={(e) => {setReal_name(e.target.value)}}
@@ -82,7 +81,6 @@ const ModalContent = ({ handleClose }) => {
       </div>
 
       <div className="form-group">
-        {/* <label>Origin description</label> */}
         <Input 
           value={origin_description}
           onChange={(e) => {setOrigin_description(e.target.value)}}
@@ -96,7 +94,6 @@ const ModalContent = ({ handleClose }) => {
       </div>
 
       <div className="form-group">
-        {/* <label>Superpowers</label> */}
         <Input 
           value={superpowers}
           onChange={(e) => {setSuperpowers(e.target.value)}}
@@ -110,7 +107,6 @@ const ModalContent = ({ handleClose }) => {
       </div>
 
       <div className="form-group">
-        {/* <label>Catch phrase</label> */}
         <Input 
           value={catch_phrase}
           onChange={(e) => {setCatch_phrase(e.target.value)}}
@@ -136,10 +132,8 @@ const ModalContent = ({ handleClose }) => {
         <img src={''} id={'myimage'} />
       </div>
 
-      <Button sx={{
-          width: '220px', 
-          margin: '0 auto',
-        }}
+      <Button 
+        sx={createBtnStyle}
         variant='contained'
         type="submit"             
         color='secondary' 

@@ -4,7 +4,17 @@ import { useParams } from "react-router-dom";
 import EditSuperhero from '../editSuperhero/EditSuperhero';
 import Loader from '../loader/Loader';
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
 import { getSuperheroe } from '../../API/superheroes/superheroes.thunks';
+
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#0B0D0E',
+    },
+  },
+});
 
 const EditSuperheroPage = () => {
     
@@ -16,13 +26,18 @@ const EditSuperheroPage = () => {
     const superheroe = useSelector((state) => state.superheroesReducer.superheroe); 
     
     useEffect(() => {
-        dispatch(getSuperheroe(pageId));
-        // setImages(superheroe.images);
+      dispatch(getSuperheroe(pageId));
+      // setImages(superheroe.images);
     }, [pageId]); 
 
   return (
     <>
-        {loading ? <EditSuperhero superheroe={superheroe} pageId={pageId} /> : <Loader />}
+      {loading 
+        ? <ThemeProvider theme={theme}>
+            <EditSuperhero superheroe={superheroe} pageId={pageId} />
+        </ThemeProvider> 
+        : <Loader />
+      }
     </>
   )
 }

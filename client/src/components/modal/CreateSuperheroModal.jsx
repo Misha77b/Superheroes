@@ -4,9 +4,19 @@ import Modal from '@mui/material/Modal';
 import DialogContent from '@mui/material/DialogContent';
 import CloseIcon from '@mui/icons-material/Close';
 
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { closeBtnStyle } from './btnsStyle/closeBtnStyles';
 
 import PropTypes from 'prop-types';
 import ModalContent from './modalContent/ModalContent';
+
+export const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#0B0D0E',
+    },
+  },
+});
 
 const style = {
   position: 'absolute',
@@ -36,21 +46,17 @@ const CreateSuperheroModal = ({open, handleClose}) => {
           <Button 
             onClick={handleClose}
             disableRipple={true}
-            sx={{
-              position: 'absolute',
-              color: 'black',
-              right: '-10px',
-              top: '10px',
-              padding: '0'
-            }}
+            sx={closeBtnStyle}
           >
             <CloseIcon />
           </Button>
-          <div>
-            <ModalContent 
-              handleClose={handleClose}
-            />
-          </div>
+          <ThemeProvider theme={theme}>
+            <div>
+              <ModalContent 
+                handleClose={handleClose}
+              />
+            </div>
+          </ThemeProvider>
         </DialogContent>
       </Modal>
     </div>
