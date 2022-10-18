@@ -15,6 +15,8 @@ const UseStylesModalContent = makeStyles({
             width: '100%',
             padding: '10px 15px',
         },
+        '.upload-image-label': {
+        },
         '.image-form': {
             margin: 'auto'
         }

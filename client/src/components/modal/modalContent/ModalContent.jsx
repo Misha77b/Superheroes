@@ -120,7 +120,7 @@ const ModalContent = ({ handleClose }) => {
       </div>
 
       <div className="form-group">
-        <InputLabel>Upload images</InputLabel>
+        <InputLabel className='upload-image-label'>Upload images</InputLabel>
         <Input 
           onChange={handleUploadImage}
           name="images"
@@ -129,7 +129,7 @@ const ModalContent = ({ handleClose }) => {
           id="images" 
           placeholder="Upload images" 
         />
-        <img src={''} id={'myimage'} />
+        <img src={''} id={'uploadedImage'} />
       </div>
 
       <Button 

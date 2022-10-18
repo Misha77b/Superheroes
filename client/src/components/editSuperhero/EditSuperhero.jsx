@@ -9,6 +9,7 @@ import { updateSuperheroe } from '../../API/superheroes/superheroes.thunks';
 import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import Input from '@mui/material/Input';
+import fileUploadReader from '../../helpers/fileUploadReader';
 
 const EditSuperhero = ({ superheroe, pageId }) => {
     useStylesEditSuperhero();
@@ -24,12 +25,15 @@ const EditSuperhero = ({ superheroe, pageId }) => {
     const [old_image, setOld_Image] = useState(superheroe.images);
 
     const handleEditImage = (e) => {
+        // wirk better with choosing another image and reloading the page
+        
         // e.preventDefault();
         setImages(e.target.files[0]);
+        fileUploadReader(e);
     }
 
     const handleSubmit = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
         const editSuperheroeData = new FormData();
         editSuperheroeData.append("nickname", nickname);
@@ -130,7 +134,7 @@ const EditSuperhero = ({ superheroe, pageId }) => {
                     placeholder="Upload images" 
                 />
                 
-                <img name="images" src={`/assets/${superheroe.images}`} alt="hero img"width={"100px"} />
+                <img name="images" id="uploadedImage" src={`/assets/${superheroe.images}`} alt="hero img"width={"100px"} />
                 <Input value={old_image} name="old_image" type="hidden" />
             </div>
 
