@@ -121,14 +121,17 @@ const ModalContent = ({ handleClose }) => {
 
       <div className="form-group">
         <InputLabel className='upload-image-label'>Upload images</InputLabel>
-        <Input 
-          onChange={handleUploadImage}
-          name="images"
+        <input 
+          onChange={handleUploadImage} 
+          name="images" 
           type="file" 
-          className="form-control image-form" 
+          className="form-control image-input" 
           id="images" 
-          placeholder="Upload images" 
         />
+        <div className="file-upload-custom">
+          <label className='custom-file-upload-btn' htmlFor='images'>Choose File</label>
+          <span className='uploaded-file-name'>{!images.name ? 'No file chosen' :  images.name}</span>
+        </div>
         <img src={''} id={'uploadedImage'} />
       </div>
 
