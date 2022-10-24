@@ -25,7 +25,7 @@ const EditSuperhero = ({ superheroe, pageId }) => {
     const [old_image, setOld_Image] = useState(superheroe.images);
 
     const handleEditImage = (e) => {
-        // wirk better with choosing another image and reloading the page
+        // work better with choosing another image and reloading the page
         
         // e.preventDefault();
         setImages(e.target.files[0]);

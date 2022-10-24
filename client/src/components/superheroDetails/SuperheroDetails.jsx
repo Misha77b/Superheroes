@@ -6,6 +6,19 @@ import { Link } from "react-router-dom";
 
 import useStylesSuperheroDetails from "./useStylesSuperheroDetails";
 
+const editBtn = {
+  fontFamily: 'Lato, sans-serif',
+  fontSize: '14px',
+  fontWeight: '400',
+  color: '#F2F1F4',
+  background: 'transparent',
+  border :'2px solid #F2F1F4',
+  borderRadius: '10px',
+  '&:hover': {
+    background: 'transparent'
+  }
+}
+
 const SuperheroDetails = ({superheroe}) => {
   useStylesSuperheroDetails();
 
@@ -25,18 +38,7 @@ const SuperheroDetails = ({superheroe}) => {
           component={Link}
           id={superheroe._id}
           to={`/edit/${superheroe._id}`}
-          sx={{
-            fontFamily: 'Lato, sans-serif',
-            fontSize: '14px',
-            fontWeight: '400',
-            color: '#F2F1F4',
-            background: 'transparent',
-            border :'2px solid #F2F1F4',
-            borderRadius: '10px',
-            '&:hover': {
-              background: 'transparent'
-            }
-          }}
+          sx={editBtn}
           variant='contained'
         >
           Edit Superhero

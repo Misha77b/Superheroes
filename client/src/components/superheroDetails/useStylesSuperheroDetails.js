@@ -40,12 +40,12 @@ const useStylesSuperheroDetails = makeStyles({
         '.superheroe-originalDescription': {
             fontSize: '20px',
             fontWeight: '400',
-            color: '#F2F1F4'
+            color: '#F2F1F4',     
         },
         '.superheroe-superpowers': {
             fontSize: '20px',
             fontWeight: '400',
-            color: '#F2F1F4'
+            color: '#F2F1F4',
         },
         '.superheroe-catchPhrase': {
             fontSize: '20px',
