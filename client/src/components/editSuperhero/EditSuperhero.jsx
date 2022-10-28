@@ -10,6 +10,7 @@ import Button from '@mui/material/Button';
 import InputLabel from '@mui/material/InputLabel';
 import Input from '@mui/material/Input';
 import fileUploadReader from '../../helpers/fileUploadReader';
+import DragAndDropFiles from '../dragAndDropFiles/DragAndDropFiles';
 
 const EditSuperhero = ({ superheroe, pageId }) => {
     useStylesEditSuperhero();
