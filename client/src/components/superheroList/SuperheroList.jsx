@@ -32,8 +32,6 @@ const SuperheroList = () => {
           />
         </div> : <Loader />
       }
-      <Button onClick={}>previous</Button>
-      <Button onClick={}>next</Button>
     </>
   )
 }
