@@ -3,8 +3,13 @@ const fs = require('fs');
 
 exports.GetSuperheroes = async (req, res) => {
     try{
-        const superheroes = await Superhero.find({});
-        res.send(superheroes);
+        const PAGE_SIZE = 6;
+        const page = parseInt(req.query.page || 0);
+        const totalPages = await Superhero.countDocuments({});
+        const superheroes = await Superhero.find({})
+            .limit(PAGE_SIZE)
+            .skip(PAGE_SIZE * page);
+        res.send({totalPages: Math.ceil(totalPages / PAGE_SIZE), superheroes});
     } catch (e) {
         res.status(500).json(e);
     }

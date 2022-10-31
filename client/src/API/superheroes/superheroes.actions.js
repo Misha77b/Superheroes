@@ -33,3 +33,9 @@ export const deleteSuperheroeRequest = (data) => ({
     type: DELETE_SUPERHEROE_REQUEST,
     payload: data
 })
+
+export const GET_TOTAL_PAGES_REQUEST = 'GET_TOTAL_PAGES_REQUEST';
+export const getTotalPagesRequest = (data) => ({
+    type: GET_TOTAL_PAGES_REQUEST,
+    payload: data
+});

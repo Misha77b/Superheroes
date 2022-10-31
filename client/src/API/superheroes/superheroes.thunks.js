@@ -4,6 +4,7 @@ import {
     getSuperheroeRequest, 
     deleteSuperheroeRequest, 
     updateSuperheroeSuccess, 
+    getTotalPagesRequest,
 } from "./superheroes.actions";
 import { setError } from "../errorHandler/errorHandler.actions";
 
@@ -29,8 +30,9 @@ export const getSuperheroes = () => {
                 "Content-Type": "application/json",
             }
         }).then(res => res.json())
-        .then(superheroes => {
+        .then(({totalPages, superheroes}) => {
             dispatch(getSuperheroesRequest(superheroes));
+            dispatch(getTotalPagesRequest(totalPages));
         })
         .catch(err => {
             dispatch(setError(err));

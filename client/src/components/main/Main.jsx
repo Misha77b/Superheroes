@@ -16,11 +16,12 @@ const Main = () => {
   const dispatch = useDispatch(); 
 
   const superheroes = useSelector((state) => state.superheroesReducer.superheroes);
+  const totalPages = useSelector((state) => state.superheroesReducer.totalPages);
 
   const routes = [
     {
       path: "/",
-      main: () => <SuperheroList superheroes={superheroes} />,
+      main: () => <SuperheroList superheroes={superheroes} totalPages={totalPages} />,
     },
     {
       path: "/favorites",

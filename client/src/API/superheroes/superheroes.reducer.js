@@ -5,6 +5,7 @@ import {
     UPDATE_SUPERHEROE_SUCCESS, 
     DELETE_SUPERHEROE_REQUEST, 
     GET_SUPERHEROE_REQUEST,
+    GET_TOTAL_PAGES_REQUEST,
 } from "./superheroes.actions";
 
 const initState = {
@@ -15,6 +16,7 @@ const initState = {
     superheroes: [],
     superheroe: {},
     deleteSuperheroeRequest: null,
+    totalPages: null,
 }
 
 const superheroesReducer = (state = initState, action) => {
@@ -24,6 +26,14 @@ const superheroesReducer = (state = initState, action) => {
             return {
                 ...state,
                 superheroes: action.payload,
+                loading: true,
+            }
+        }
+
+        case GET_TOTAL_PAGES_REQUEST: {
+            return {
+                ...state,
+                totalPages: action.payload,
                 loading: true,
             }
         }

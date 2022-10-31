@@ -4,10 +4,11 @@ const useStylesSuperheroList = makeStyles({
     '@global': {
         '.superheroList': {
             width: '100%', 
-            display: 'flex', 
-            justifyContent: 'space-betwen', 
-            justifyContent: 'center', 
-            flexWrap: 'wrap',
+            display: 'grid', 
+            justifyContent: 'center',
+            gridTemplateColumns: 'repeat(auto-fill, 400px)',
+            gridAutoRows: 'auto',
+            gridGap: '20px'
         }
     }
 })
