@@ -13,16 +13,21 @@ const SuperheroList = () => {
   useStylesSuperheroList();
   const dispatch = useDispatch(); 
 
+  const [pageNumber, setPageNumber] = useState(0);
+  
   const superheroes = useSelector((state) => state.superheroesReducer.superheroes);
   const totalPages = useSelector((state) => state.superheroesReducer.totalPages);
   const loading = useSelector((state) => state.superheroesReducer.loading);
+  
+  // const pages = new Array(totalPages).fill(null).map((v, i) => i);
 
   console.log(totalPages);
   console.log(superheroes);
+  // console.log(pages);
 
   useEffect(() => {
-    dispatch(getSuperheroes());
-  }, []);
+    dispatch(getSuperheroes(pageNumber));
+  }, [pageNumber]);
 
   return (
     <>
@@ -30,6 +35,9 @@ const SuperheroList = () => {
           <SuperheroCard 
             superheroes={superheroes}
           />
+          {/* {pages.map((i) => {
+            <Button>{i + 1}</Button>
+          })} */}
         </div> : <Loader />
       }
     </>
