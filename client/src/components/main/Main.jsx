@@ -1,11 +1,8 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
 import {
   Route,
   Routes
 } from "react-router-dom";
-
-import { getSuperheroes } from '../../API/superheroes/superheroes.thunks';
 
 import Favorites from '../favorites/Favorites'
 import SuperheroList from '../superheroList/SuperheroList';
@@ -13,15 +10,11 @@ import SuperheroPage from '..//superheroPage/SuperheroPage';
 import EditSuperheroPage from '../editSuperheroPage/EditSuperheroPage';
 
 const Main = () => {
-  const dispatch = useDispatch(); 
-
-  const superheroes = useSelector((state) => state.superheroesReducer.superheroes);
-  const totalPages = useSelector((state) => state.superheroesReducer.totalPages);
 
   const routes = [
     {
       path: "/",
-      main: () => <SuperheroList superheroes={superheroes} totalPages={totalPages} />,
+      main: () => <SuperheroList />,
     },
     {
       path: "/favorites",
@@ -36,12 +29,6 @@ const Main = () => {
       main: () => <EditSuperheroPage />,
     }
   ]; 
-
-  useEffect(() => {
-    dispatch(getSuperheroes());
-  }, []);
-
-  console.log(superheroes);
 
   return (
     <div>

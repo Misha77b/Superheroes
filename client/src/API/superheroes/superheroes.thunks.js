@@ -22,9 +22,9 @@ export const createSuperheroe = (createSuperheroeData) => {
     }
 };
 
-export const getSuperheroes = () => {
+export const getSuperheroes = (page) => {
     return (dispatch) => {
-        fetch(`http://localhost:5000/superheroes`, {
+        fetch(`http://localhost:5000/superheroes?page=${page}`, {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
