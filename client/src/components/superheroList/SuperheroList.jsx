@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-
-import { getSuperheroes } from '../../API/superheroes/superheroes.thunks';
-
 import useStylesSuperheroList from './useStylesSuperheroList';
+
+import { Button } from '@mui/material';
+
 import SuperheroCard from '../superheroCard/SuperheroCard';
 import Loader from '../loader/Loader';
-import { Button } from '@mui/material';
+import { getSuperheroes } from '../../API/superheroes/superheroes.thunks';
 
 const SuperheroList = () => {
   useStylesSuperheroList();
@@ -23,11 +23,19 @@ const SuperheroList = () => {
 
   console.log(totalPages);
   console.log(superheroes);
-  // console.log(pages);
+  console.log(pages);
 
   useEffect(() => {
     dispatch(getSuperheroes(pageNumber));
   }, [pageNumber]);
+
+  // const goToPreviousPage = () => {
+  //   setPageNumber(Math.max(0 + pageNumber - 1));
+  // };
+
+  // const goToNextPage = () => {
+  //   setPageNumber(Math.min(totalPages -1, pageNumber + 1));
+  // };
 
   return (
     <>
@@ -37,7 +45,11 @@ const SuperheroList = () => {
           />
         </div> : <Loader />
       }
-      {pages.map((i) => <Button onClick={() => setPageNumber(i)} key={i+1}>{i + 1}</Button>)}
+
+      {/* work with pagination buttons style*/}
+      {/* <Button disable={pageNumber === 1} onClick={goToPreviousPage}>Prev</Button> */}
+      {pages.map((i) => <Button onClick={() => setPageNumber(i)} key={i}>{i + 1}</Button>)}
+      {/* <Button disable={pageNumber === totalPages} onClick={goToNextPage}>Next</Button> */}
     </>
   )
 }
