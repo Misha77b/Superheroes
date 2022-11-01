@@ -19,7 +19,7 @@ const SuperheroList = () => {
   const totalPages = useSelector((state) => state.superheroesReducer.totalPages);
   const loading = useSelector((state) => state.superheroesReducer.loading);
   
-  // const pages = new Array(totalPages).fill(null).map((v, i) => i);
+  const pages = new Array(totalPages).fill(null).map((v, i) => i);
 
   console.log(totalPages);
   console.log(superheroes);
@@ -35,11 +35,9 @@ const SuperheroList = () => {
           <SuperheroCard 
             superheroes={superheroes}
           />
-          {/* {pages.map((i) => {
-            <Button>{i + 1}</Button>
-          })} */}
         </div> : <Loader />
       }
+      {pages.map((i) => <Button onClick={() => setPageNumber(i)} key={i+1}>{i + 1}</Button>)}
     </>
   )
 }
