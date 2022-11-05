@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import useStylesSuperheroList from './useStylesSuperheroList';
 
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 import { Button } from '@mui/material';
 
 import SuperheroCard from '../superheroCard/SuperheroCard';
@@ -48,6 +50,13 @@ const SuperheroList = () => {
 
       {/* work with pagination buttons style*/}
       {/* Pagintion page controll section */}
+      <Stack spacing={2}>
+        <Pagination 
+          count={totalPages}
+          page={pageNumber + 1}
+          onChange={(_, num) => setPageNumber(num - 1)}
+        />
+      </Stack>
       <Button disabled={pageNumber === 0} onClick={goToPreviousPage}>Prev</Button>
       {pages.map((i) => <Button onClick={() => setPageNumber(i)} key={i}>{i + 1}</Button>)}
       <Button disabled={pageNumber === totalPages -1} onClick={goToNextPage}>Next</Button>
