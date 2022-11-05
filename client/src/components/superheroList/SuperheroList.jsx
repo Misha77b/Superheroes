@@ -29,13 +29,13 @@ const SuperheroList = () => {
     dispatch(getSuperheroes(pageNumber));
   }, [pageNumber]);
 
-  // const goToPreviousPage = () => {
-  //   setPageNumber(Math.max(0 + pageNumber - 1));
-  // };
+  const goToPreviousPage = () => {
+    setPageNumber(Math.max(0, pageNumber - 1));
+  };
 
-  // const goToNextPage = () => {
-  //   setPageNumber(Math.min(totalPages -1, pageNumber + 1));
-  // };
+  const goToNextPage = () => {
+    setPageNumber(Math.min(totalPages -1, pageNumber + 1));
+  };
 
   return (
     <>
@@ -47,9 +47,10 @@ const SuperheroList = () => {
       }
 
       {/* work with pagination buttons style*/}
-      {/* <Button disable={pageNumber === 1} onClick={goToPreviousPage}>Prev</Button> */}
+      {/* Pagintion page controll section */}
+      <Button disabled={pageNumber === 0} onClick={goToPreviousPage}>Prev</Button>
       {pages.map((i) => <Button onClick={() => setPageNumber(i)} key={i}>{i + 1}</Button>)}
-      {/* <Button disable={pageNumber === totalPages} onClick={goToNextPage}>Next</Button> */}
+      <Button disabled={pageNumber === totalPages -1} onClick={goToNextPage}>Next</Button>
     </>
   )
 }
