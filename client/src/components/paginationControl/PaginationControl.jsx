@@ -6,13 +6,20 @@ import Stack from '@mui/material/Stack';
 
 const PaginationControl = ({ totalPages, pageNumber, setPageNumber }) => {
 
+  const handlePageChange = (_, num) => {
+    setPageNumber(num - 1)
+  };
+
   return (
-    <Stack spacing={2}>
-        <Pagination 
-          count={totalPages || 0}
-          page={pageNumber + 1}
-          onChange={(_, num) => setPageNumber(num - 1)}
-        />
+    <Stack sx={{margin: '20px auto 40px'}} spacing={2}>
+      <Pagination 
+        count={totalPages || 0}
+        page={pageNumber + 1}
+        onChange={handlePageChange}
+        size={"large"}
+        // sx={{color: 'white'}}
+        color={'primary'}
+      />
     </Stack>
   )
 }

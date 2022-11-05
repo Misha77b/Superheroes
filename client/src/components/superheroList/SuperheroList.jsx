@@ -31,19 +31,22 @@ const SuperheroList = () => {
 
   return (
     <>
-      {loading ? <div className='superheroList'>
-          <SuperheroCard 
-            superheroes={superheroes}
+      {loading ? <div className='superhero-layout'>
+          <div className='superheroList'>
+            <SuperheroCard 
+              superheroes={superheroes}
+            />
+          </div>
+          <PaginationControl 
+            totalPages={totalPages}
+            pageNumber={pageNumber}
+            setPageNumber={setPageNumber}
           />
         </div> : <Loader />
       }
 
       {/* Pagintion page controll section, work with styling */}
-      <PaginationControl 
-        totalPages={totalPages}
-        pageNumber={pageNumber}
-        setPageNumber={setPageNumber}
-      />
+      
     </>
   )
 }
