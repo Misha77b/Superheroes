@@ -44,9 +44,6 @@ const SuperheroList = () => {
           />
         </div> : <Loader />
       }
-
-      {/* Pagintion page controll section, work with styling */}
-      
     </>
   )
 }
