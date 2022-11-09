@@ -1,19 +1,33 @@
-import { combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import thunk from 'redux-thunk';
-import superheroesReducer from '../API/superheroes/superheroes.reducer';
 
+import rootReducer from './rootReducer';
+
+const persistConfig = {
+  key: 'root',
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const reduxDevToolsCompose = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'];
 
-const rootReducer = combineReducers({
-  superheroesReducer,
-});
-
 const store = configureStore({
   devTools: reduxDevToolsCompose,
-  reducer: rootReducer,
+  reducer: persistedReducer,
   middleware: [thunk],
 });
 
+export const persistor = persistStore(store);
 export default store
