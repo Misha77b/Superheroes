@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 
 import { deleteSuperheroe } from '../../API/superheroes/superheroes.thunks';
+import { addToFavorite } from '../../API/favorites/favorites.thunks';
 
 const SuperheroCard = ({superheroes}) => {
   const dispatch = useDispatch();
@@ -19,6 +20,11 @@ const SuperheroCard = ({superheroes}) => {
   const handleDelete = (e) => {
     const id = e.target.id;
     dispatch(deleteSuperheroe(id));
+  }
+
+  const addToFav = (e) => {
+    const id = e.target.id;
+    dispatch(addToFavorite(id))
   }
   
   return (
@@ -68,6 +74,7 @@ const SuperheroCard = ({superheroes}) => {
               Delete
             </Button>
           </CardActions>
+          <Button onClick={addToFav}>Add to fav</Button>
         </Card>
       })}
     </>

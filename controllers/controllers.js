@@ -95,3 +95,15 @@ exports.DeleteSuperhero = async (req, res) => {
         res.status(500).json(e);
     }
 };
+
+exports.GetFavorites = async (res, req) = {
+    
+}
+
+exports.AddToFavorites = async (res, req) = {
+    
+}
+
+exports.RemoveFromFavorites = async (res, req) = {
+
+}
