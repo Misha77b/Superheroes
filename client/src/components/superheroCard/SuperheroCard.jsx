@@ -2,13 +2,17 @@ import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Card from '@mui/material/Card';
-import CardActionArea from '@mui/material/CardActionArea';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
+// import Card from '@mui/material/Card';
+// import CardActionArea from '@mui/material/CardActionArea';
+// import CardActions from '@mui/material/CardActions';
+// import CardContent from '@mui/material/CardContent';
+// import CardMedia from '@mui/material/CardMedia';
+// import Typography from '@mui/material/Typography';
+// import Button from '@mui/material/Button';
+import { Card, CardActionArea, CardActions, CardMedia, CardContent, Typography, IconButton, Button, Box } from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 import { Link } from "react-router-dom";
 
 import { deleteSuperheroe } from '../../API/superheroes/superheroes.thunks';
@@ -22,10 +26,10 @@ const SuperheroCard = ({superheroes}) => {
     dispatch(deleteSuperheroe(id));
   }
 
-  const addToFav = (e) => {
-    const id = e.target.id;
-    dispatch(addToFavorite(id))
-  }
+  // const addToFav = (e) => {
+  //   const id = e.target.id;
+  //   dispatch(addToFavorite(id))
+  // }
   
   return (
     <>
@@ -44,37 +48,42 @@ const SuperheroCard = ({superheroes}) => {
             </CardContent>
           </CardActionArea>
           <CardActions
-            sx={{display: 'flex', justifyContent: 'space-around'}}
+            sx={{display: 'flex', justifyContent: 'space-between', margin: '0 10px'}}
           >
-            <Button
-              className='view-btn'
-              component={Link}
-              id={superheroe._id}
-              to={`/view/${superheroe._id}`}
-              sx={{
-                backgroundColor: '#101415', 
-                color: '#CCCCCC'
-              }}
-              variant='contained'
-            >
-              View
-            </Button>
-            <Button
-              className='delete_btn'
-              onClick={handleDelete}
-              id={superheroe._id}
-              sx={{
-                backgroundColor: '#101415', 
-                color: '#CCCCCC', 
-                '&:hover':{
-                  background: '#FF2400'}
-              }}
-              variant='contained'
-            >
-              Delete
-            </Button>
+            <IconButton>
+              <FavoriteBorderIcon /> {/* <FavoriteIcon /> */}
+            </IconButton>
+            <Box component="div" sx={{display: 'flex', gap: '20px'}}>
+              <Button
+                className='view-btn'
+                component={Link}
+                id={superheroe._id}
+                to={`/view/${superheroe._id}`}
+                sx={{
+                  backgroundColor: '#101415', 
+                  color: '#CCCCCC'
+                }}
+                variant='contained'
+              >
+                View
+              </Button>
+              <Button
+                className='delete_btn'
+                onClick={handleDelete}
+                id={superheroe._id}
+                sx={{
+                  backgroundColor: '#101415', 
+                  color: '#CCCCCC', 
+                  '&:hover':{
+                    background: '#FF2400'}
+                }}
+                variant='contained'
+              >
+                Delete
+              </Button>
+            </Box>
           </CardActions>
-          <Button onClick={addToFav}>Add to fav</Button>
+          {/* <Button onClick={addToFav}>Add to fav</Button> */}
         </Card>
       })}
     </>
