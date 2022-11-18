@@ -1,24 +1,31 @@
 import React, {useState} from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
+import useStylesSuperheroCard from './useStylesSuperheroCard';
+import { viewBtn } from './btnsStyle/viewBtnStyle';
+import { deleteBtn } from './btnsStyle/deleteBtnStyle';
 
-// import Card from '@mui/material/Card';
-// import CardActionArea from '@mui/material/CardActionArea';
-// import CardActions from '@mui/material/CardActions';
-// import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
-// import Typography from '@mui/material/Typography';
-// import Button from '@mui/material/Button';
-import { Card, CardActionArea, CardActions, CardMedia, CardContent, Typography, IconButton, Button, Box } from '@mui/material';
+import { 
+  Card, 
+  CardActionArea, 
+  CardActions, 
+  CardMedia, 
+  CardContent, 
+  Typography, 
+  IconButton, 
+  Button, 
+  Box 
+} from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import { Link } from "react-router-dom";
 
 import { deleteSuperheroe } from '../../API/superheroes/superheroes.thunks';
-import { addToFavorite } from '../../API/favorites/favorites.thunks';
+// import { addToFavorite } from '../../API/favorites/favorites.thunks';
 
 const SuperheroCard = ({superheroes}) => {
+  useStylesSuperheroCard();
   const dispatch = useDispatch();
 
   const handleDelete = (e) => {
@@ -34,7 +41,7 @@ const SuperheroCard = ({superheroes}) => {
   return (
     <>
       {superheroes.map((superheroe) => {
-        return <Card sx={{width: 345, margin: '20px', background: '#272933'}} className='superhero-card' key={superheroe._id}>
+        return <Card sx={{width: 345, margin: '20px', background: '#272933', borderRadius: '10px'}} className='superhero-card' key={superheroe._id}>
           <CardActionArea>
             <CardMedia
               sx={{height: 250, objectFit: 'cover',}}
@@ -50,38 +57,30 @@ const SuperheroCard = ({superheroes}) => {
           <CardActions
             sx={{display: 'flex', justifyContent: 'space-between', margin: '0 10px'}}
           >
-            <IconButton>
-              <FavoriteBorderIcon /> {/* <FavoriteIcon /> */}
-            </IconButton>
             <Box component="div" sx={{display: 'flex', gap: '20px'}}>
               <Button
-                className='view-btn'
+                className='card-actrion-btns view-btn'
                 component={Link}
                 id={superheroe._id}
                 to={`/view/${superheroe._id}`}
-                sx={{
-                  backgroundColor: '#101415', 
-                  color: '#CCCCCC'
-                }}
+                sx={viewBtn}
                 variant='contained'
               >
                 View
               </Button>
               <Button
-                className='delete_btn'
+                className='card-actrion-btns delete_btn'
                 onClick={handleDelete}
                 id={superheroe._id}
-                sx={{
-                  backgroundColor: '#101415', 
-                  color: '#CCCCCC', 
-                  '&:hover':{
-                    background: '#FF2400'}
-                }}
-                variant='contained'
+                sx={deleteBtn}
               >
                 Delete
               </Button>
             </Box>
+            {/* Add to fav btn */}
+            <IconButton>
+              <FavoriteBorderIcon /> {/* <FavoriteIcon /> */}
+            </IconButton>
           </CardActions>
           {/* <Button onClick={addToFav}>Add to fav</Button> */}
         </Card>
