@@ -1,13 +1,25 @@
 const Superhero = require('../models/superheroSchema');
 
-exports.GetFavorites = async (res, req) = {
-    
-}
+exports.GetFavorites = async (req, res) => {
+    try{
 
-exports.AddToFavorites = async (res, req) = {
-    
-}
+    } catch (e) {
+        res.status(500).json(e);
+    }
+};
 
-exports.RemoveFromFavorites = async (res, req) = {
+exports.AddToFavorites = async (req, res) => {
+    try{
 
-}
+    } catch (e) {
+        res.status(500).json(e);
+    }
+};
+
+exports.RemoveFromFavorites = async (req, res) => {
+    try{
+
+    } catch (e) {
+        res.status(500).json(e);
+    }
+};
