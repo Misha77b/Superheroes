@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 
 const superheroRouter = require('./routes/superheroes');
+const authUserRouter = require('./routes/user');
 
 const app = express();
 app.use(cors());
@@ -28,7 +29,8 @@ mongoose
 
 
 // Use Routes
-app.use('/superheroes', superheroRouter)
+app.use('/superheroes', superheroRouter);
+app.use('/superheroes/user', authUserRouter);
 
 // PORT
 app.listen(PORT, function () {
