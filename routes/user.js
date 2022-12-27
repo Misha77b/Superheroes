@@ -8,5 +8,6 @@ const {
 const router = new Router();
 
 router.post("/register", registerUser);
+// router.post("/auth", registerUser);
 
 module.exports = router;

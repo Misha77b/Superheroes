@@ -1,48 +1,44 @@
 const User = require('../models/userSchema');
-const fs = require('fs');
 
 const bcrypt = require("bcryptjs");
 // const jwt = require("jsonwebtoken");
-// const _ = require("lodash");
+const _ = require("lodash");
 // const passport = require("passport");
 // const uniqueRandom = require("unique-random");
 // const rand = uniqueRandom(10000000, 99999999);
 
 
-exports.registerUser = (req, res, next) => {
+exports.registerUser = async (req, res) => {
 
-    const saltRounds = 10;
-    const password = req.body.password;
+  const initialQuery = _.cloneDeep(req.body);
+  const saltRounds = 10;
+  const newUser = new User(initialQuery);
 
-    bcrypt.genSalt(saltRounds, function(err, salt) {
-        bcrypt.hash(password, salt, function(err, hash) {
+  bcrypt.genSalt(saltRounds, function(err, salt) {
+    bcrypt.hash(newUser.password, salt, function(err, hash) {
 
-            if (err) {
-                res
-                  .status(400)
-                  .json({ message: `Error happened on server: ${err}` });
-    
-                return;
-            }
+    console.log(req.body);
+    if (err) {
+      res
+        .status(400)
+        .json({ message: `Error happened on server: ${err}` });
 
-            let user = new User ({
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                password: req.body.hash,
-            });
-        
-            user.save()
-            .then(user => res.json({message: 'User Added successfully!'}))
-            .catch(err =>
-              res.status(400).json({
-                message: `Error happened on server: "${err}" "${req.body}"`
-              })
-            );
-            
-            console.log(hash);
-        });
+      return;
+    }
+
+    console.log(newUser);
+    newUser
+      .save()
+      .then(user => res.json({message: 'User Added successfully!'}))
+      .catch(err =>
+        res.status(400).json({
+          message: `Error happened on server: "${err}"`
+        })
+      );
+      
+      console.log(hash);
     });
+  });
 };
 
 exports.logInUser = async (req, res, next) => {
