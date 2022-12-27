@@ -23,11 +23,11 @@ const userSchema = new Schema ({
         type: String,
         required: true
     },
-    // isAdmin: {
-    //     type: Boolean,
-    //     required: true,
-    //     default: false
-    // },
+    isAdmin: {
+        type: Boolean,
+        required: true,
+        default: false
+    },
     // enabled: {
     //     type: Boolean,
     //     required: true,
