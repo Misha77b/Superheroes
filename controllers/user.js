@@ -51,12 +51,7 @@ exports.logInUser = async (req, res) => {
     .then(user => {
       if(user){
         bcrypt.compare(password, user.password, function(err, result){
-          const payload = {
-            id: user.id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            isAdmin: user.isAdmin
-          };
+          
           console.log(password, user.password);
           if(err) {
             res
@@ -64,6 +59,13 @@ exports.logInUser = async (req, res) => {
             .json({ message: `User not found` });
           }
           if(result) {
+            const payload = {
+              id: user.id,
+              firstName: user.firstName,
+              lastName: user.lastName,
+              isAdmin: user.isAdmin
+            };
+            
             let token = jwt.sign(payload, 'very secret value', { expiresIn: 3600000 })
             res.json({
               success: true,
