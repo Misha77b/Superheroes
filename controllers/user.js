@@ -45,16 +45,18 @@ exports.logInUser = async (req, res) => {
   const email = req.body.email;
   const password = req.body.password;
 
-  User.findOne({$or: [{email: email}, {password: password}]})
+  User.findOne({
+    $or: [{email: email}, {password: password}]
+  })
     .then(user => {
       if(user){
-        const payload = {
-          id: user._id,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          isAdmin: user.isAdmin
-        };
         bcrypt.compare(password, user.password, function(err, result){
+          const payload = {
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            isAdmin: user.isAdmin
+          };
           console.log(password, user.password);
           if(err) {
             res
@@ -62,7 +64,7 @@ exports.logInUser = async (req, res) => {
             .json({ message: `User not found` });
           }
           if(result) {
-            let token = jwt.sign(payload, 'very secret value', {expiresIn: 3600000})
+            let token = jwt.sign(payload, 'very secret value', { expiresIn: 3600000 })
             res.json({
               success: true,
               token: "Bearer " + token
