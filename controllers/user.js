@@ -42,41 +42,44 @@ exports.registerUser = async (req, res) => {
 };
 
 exports.logInUser = async (req, res) => {
-  const email = req.body.email;
+  const loginOrEmail = req.body.loginOrEmail;
   const password = req.body.password;
 
   User.findOne({
-    $or: [{email: email}, {password: password}]
+    $or: [{email: loginOrEmail}, {login: loginOrEmail}]
   })
     .then(user => {
-      if(user){
-        bcrypt.compare(password, user.password, function(err, result){
-          
-          console.log(password, user.password);
-          if(err) {
-            res
-            .status(404)
-            .json({ message: `User not found` });
-          }
-          if(result) {
-            const payload = {
-              id: user.id,
-              firstName: user.firstName,
-              lastName: user.lastName,
-              isAdmin: user.isAdmin
-            };
-            
-            let token = jwt.sign(payload, 'very secret value', { expiresIn: 3600000 })
-            res.json({
-              success: true,
-              token: "Bearer " + token
-            });
-          } else {
-            return res.status(400).json({ message: `Password is incorrect` });
-          }
-        })
+      if(!user) {
+        res
+        .status(404)
+        .json({ message: `User not found` });
       }
-    })
+      
+      bcrypt.compare(password, user.password).then((err, result) => {
+        console.log(password, user.password);
+        if(!result) {
+          const payload = {
+            id: user.id,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            isAdmin: user.isAdmin
+          };
+          console.log(payload);
+          
+          let token = jwt.sign(
+            payload, 
+            'verySecretValue', 
+            { expiresIn: 3600000 }
+          )
+          res.json({
+            success: true,
+            token: "Bearer " + token
+          });
+        } else {
+          return res.status(400).json({ message: `Password is incorrect` });
+        }
+      })
+    })    
     .catch(err =>
       res.status(400).json({
         message: `Error happened on server: "${err}" `
