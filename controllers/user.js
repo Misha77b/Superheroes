@@ -30,7 +30,7 @@ exports.registerUser = async (req, res) => {
       return;
     }
 
-    // newUser.password = hash;
+    newUser.password = hash;
     console.log(newUser);
     newUser
       .save()
@@ -46,7 +46,7 @@ exports.registerUser = async (req, res) => {
   });
 };
 
-exports.logInUser = async (req, res) => {
+exports.logInUser = async (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
 
@@ -61,7 +61,7 @@ exports.logInUser = async (req, res) => {
       } else {
         bcrypt.compare(password, user.password).then(result => {
           console.log(password, user.password);
-          if(!result) {
+          if(result) {
             // console.log(!result);
             const payload = {
               id: user.id,
