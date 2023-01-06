@@ -1,4 +1,5 @@
 const User = require('../models/userSchema');
+
 require("dotenv").config(); // load .env variables
 
 //DESTRUCTURE ENV VARIABLES WITH DEFAULTS
@@ -12,7 +13,7 @@ const _ = require("lodash");
 // const rand = uniqueRandom(10000000, 99999999);
 
 
-exports.registerUser = async (req, res) => {
+exports.signUpUser = async (req, res) => {
 
   const initialQuery = _.cloneDeep(req.body);
   const saltRounds = 10;
@@ -62,19 +63,17 @@ exports.logInUser = async (req, res, next) => {
         bcrypt.compare(password, user.password).then(result => {
           console.log(password, user.password);
           if(result) {
-            // console.log(!result);
             const payload = {
               id: user.id,
               firstName: user.firstName,
               lastName: user.lastName,
               isAdmin: user.isAdmin
             };
-            console.log(payload);
             
             let token = jwt.sign(
               payload, 
               SECRET, 
-              { expiresIn: 3600000 }
+              { expiresIn: 360000000000 }
             )
             res.json({
               success: true,
@@ -93,8 +92,23 @@ exports.logInUser = async (req, res, next) => {
     );
 };
 
-exports.getUser = async (req, res) => {
+// exports.getUser = async (req, res) => {
+//   res.json(req.user);
+// };
 
+exports.authUser = async (req, res, next) => {
+  try{
+    const token = req.headers.authorization.split(' ')[1];
+    const decode = jwt.verify(token, SECRET);
+  
+    req.user = decode;
+    next()
+  }
+  catch(err) {
+    res.json({
+      message: `Authorization  failed ${err}`
+    })
+  }
 };
 
 exports.editUserInfo = async (req, res) => {
