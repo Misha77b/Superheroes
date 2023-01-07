@@ -11,7 +11,7 @@ const router = new Router();
 
 router.post("/signup", signUpUser);
 router.post("/login", logInUser);
-router.get("/auth", getUsers);
+router.get("/", getUsers);
 router.get("/auth", authUser);
 
 module.exports = router;

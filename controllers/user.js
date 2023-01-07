@@ -105,9 +105,17 @@ exports.authUser = async (req, res, next) => {
   try{
     const token = req.headers.authorization.split(' ')[1];
     const decode = jwt.verify(token, SECRET);
-    console.log(decode);
+
+    // console.log(decode);
+    // res.send(decode)
+    // let userId = decode.id
+    // console.log(userId);
+    // User.findOne({id, userId})
+    //   .then((user) => {
+    //     user
+    //   })
   
-    req.user = decode;
+    // req.user = decode;
     next()
   }
   catch(err) {
