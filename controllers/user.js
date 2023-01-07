@@ -92,14 +92,20 @@ exports.logInUser = async (req, res, next) => {
     );
 };
 
-// exports.getUser = async (req, res) => {
-//   res.json(req.user);
-// };
+exports.getUsers = async (req, res) => {
+  try{
+    const users = await User.find({})
+    res.send({users});
+  } catch (e) {
+      res.status(500).json(e);
+  }
+};
 
 exports.authUser = async (req, res, next) => {
   try{
     const token = req.headers.authorization.split(' ')[1];
     const decode = jwt.verify(token, SECRET);
+    console.log(decode);
   
     req.user = decode;
     next()

@@ -30,7 +30,7 @@ mongoose
 
 // Use Routes
 app.use('/superheroes', superheroRouter);
-app.use('/superheroes/user', authUserRouter);
+app.use('/users', authUserRouter);
 
 // PORT
 app.listen(PORT, function () {
