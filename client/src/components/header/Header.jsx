@@ -3,8 +3,12 @@ import UseStylesHeader from './UseStylesHeader';
 import Button from '@mui/material/Button';
 import { Link } from "react-router-dom";
 import CreateSuperheroModal from '../modal/CreateSuperheroModal';
-import HomeIcon from './HomeIcon';
-import FavIcon from './FavIcon';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+// Profile and login
+import Badge from '@mui/material/Badge';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 
 const Header = () => {
   UseStylesHeader();
@@ -27,37 +31,34 @@ const Header = () => {
             className='home-btn'
             component={Link}
             to={`/`} 
-            // sx={{
-            //   margin: '10px 50px'
-            // }}
           >
-            <HomeIcon />
+            <HomeRoundedIcon sx={{ fontSize: 35, color: '#A99E84' }} />
           </Button>
           <Button
             className='fav-btn'
             component={Link}
             to={`/favorites`} 
-            // sx={{
-            //   margin: '10px 50px'
-            // }}
           >
-            <FavIcon />
+            <FavoriteIcon sx={{ fontSize: 35, color: '#A99E84' }} />
           </Button>
         </div>
         <h2 className="header-logo-title">Superheroes</h2>
-        <Button
-            onClick={handleOpen}
-            className='header-btn'
-            sx={{
-              margin: '10px 50px',
-              border: '2px solid #A99E84',
-              background: 'transparent',
-              color: '#A99E84',
-              borderRadius: '5px',
-            }}
-        > 
-          Create Superhero
-        </Button>
+        <div className='header-create-and-profile'>
+          <Button
+              onClick={handleOpen}
+              className='header-btn'
+              sx={{
+                border: '2px solid #A99E84',
+                background: 'transparent',
+                color: '#A99E84',
+                borderRadius: '5px',
+              }}
+          > 
+            Create Superhero
+          </Button>
+          {/* profile and login */}
+          <AccountCircleIcon sx={{ fontSize: 35, color: '#A99E84' }} />
+        </div>
       </div>
       {open && 
         <CreateSuperheroModal 
@@ -65,6 +66,7 @@ const Header = () => {
           handleClose={handleClose}
         />
       }
+
     </>
   )
 }

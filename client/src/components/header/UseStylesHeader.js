@@ -22,6 +22,12 @@ const UseStylesHeader = makeStyles({
             color: '#A99E84',
             cursor: 'pointer',
         },
+        '.header-create-and-profile': {
+            margin: '10px 50px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '10px'
+        },
     }
 })
 
